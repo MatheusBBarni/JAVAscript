@@ -17,6 +17,7 @@ export class Tokenizer {
     'function': TokenType.FUNCTION,
     'return': TokenType.RETURN,
     'import': TokenType.IMPORT,
+    'export': TokenType.EXPORT,
     'from': TokenType.FROM,
     'if': TokenType.IF,
     'else': TokenType.ELSE,

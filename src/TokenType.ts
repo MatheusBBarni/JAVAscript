@@ -6,6 +6,7 @@ export enum TokenType {
   FUNCTION = 'FUNCTION',
   RETURN = 'RETURN',
   IMPORT = 'IMPORT',
+  EXPORT = 'EXPORT',
   FROM = 'FROM',
   IF = 'IF',
   ELSE = 'ELSE',
