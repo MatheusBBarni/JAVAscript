@@ -1,0 +1,349 @@
+Source: 07-http-server.ts
+
+Tokens:
+Token(IMPORT, "import", line=1, col=1)
+Token(IDENTIFIER, "http", line=1, col=8)
+Token(FROM, "from", line=1, col=13)
+Token(STRING, "http", line=1, col=18)
+Token(SEMICOLON, ";", line=1, col=24)
+Token(FUNCTION, "function", line=3, col=1)
+Token(IDENTIFIER, "handler", line=3, col=10)
+Token(L_PAREN, "(", line=3, col=17)
+Token(IDENTIFIER, "req", line=3, col=18)
+Token(COLON, ":", line=3, col=21)
+Token(TYPE_ANY, "any", line=3, col=23)
+Token(COMMA, ",", line=3, col=26)
+Token(IDENTIFIER, "res", line=3, col=28)
+Token(COLON, ":", line=3, col=31)
+Token(TYPE_ANY, "any", line=3, col=33)
+Token(R_PAREN, ")", line=3, col=36)
+Token(COLON, ":", line=3, col=37)
+Token(TYPE_VOID, "void", line=3, col=39)
+Token(L_BRACE, "{", line=3, col=44)
+Token(IDENTIFIER, "res", line=4, col=3)
+Token(DOT, ".", line=4, col=6)
+Token(IDENTIFIER, "writeHead", line=4, col=7)
+Token(L_PAREN, "(", line=4, col=16)
+Token(NUMBER, "200", line=4, col=17)
+Token(COMMA, ",", line=4, col=20)
+Token(STRING, "OK", line=4, col=22)
+Token(R_PAREN, ")", line=4, col=26)
+Token(SEMICOLON, ";", line=4, col=27)
+Token(IDENTIFIER, "res", line=5, col=3)
+Token(DOT, ".", line=5, col=6)
+Token(IDENTIFIER, "end", line=5, col=7)
+Token(L_PAREN, "(", line=5, col=10)
+Token(STRING, "Hello from JAVAscript server!", line=5, col=11)
+Token(R_PAREN, ")", line=5, col=42)
+Token(SEMICOLON, ";", line=5, col=43)
+Token(R_BRACE, "}", line=6, col=1)
+Token(CONST, "const", line=8, col=1)
+Token(IDENTIFIER, "server", line=8, col=7)
+Token(EQUALS, "=", line=8, col=14)
+Token(IDENTIFIER, "http", line=8, col=16)
+Token(DOT, ".", line=8, col=20)
+Token(IDENTIFIER, "createServer", line=8, col=21)
+Token(L_PAREN, "(", line=8, col=33)
+Token(IDENTIFIER, "handler", line=8, col=34)
+Token(R_PAREN, ")", line=8, col=41)
+Token(SEMICOLON, ";", line=8, col=42)
+Token(IDENTIFIER, "server", line=10, col=1)
+Token(DOT, ".", line=10, col=7)
+Token(IDENTIFIER, "listen", line=10, col=8)
+Token(L_PAREN, "(", line=10, col=14)
+Token(NUMBER, "3000", line=10, col=15)
+Token(COMMA, ",", line=10, col=19)
+Token(L_PAREN, "(", line=10, col=21)
+Token(R_PAREN, ")", line=10, col=22)
+Token(ARROW, "=>", line=10, col=24)
+Token(L_BRACE, "{", line=10, col=27)
+Token(IDENTIFIER, "console", line=11, col=3)
+Token(DOT, ".", line=11, col=10)
+Token(IDENTIFIER, "log", line=11, col=11)
+Token(L_PAREN, "(", line=11, col=14)
+Token(STRING, "Server running on port 3000", line=11, col=15)
+Token(R_PAREN, ")", line=11, col=44)
+Token(SEMICOLON, ";", line=11, col=45)
+Token(R_BRACE, "}", line=12, col=1)
+Token(R_PAREN, ")", line=12, col=2)
+Token(SEMICOLON, ";", line=12, col=3)
+Token(EOF, "", line=13, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "http"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "http",
+        "raw": "\"http\"",
+        "line": 1,
+        "column": 18
+      },
+      "line": 1,
+      "column": 1
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "handler"
+      },
+      "params": [
+        {
+          "type": "Identifier",
+          "name": "req",
+          "typeAnnotation": {
+            "type": "KeywordType",
+            "name": "any",
+            "line": 3,
+            "column": 23
+          }
+        },
+        {
+          "type": "Identifier",
+          "name": "res",
+          "typeAnnotation": {
+            "type": "KeywordType",
+            "name": "any",
+            "line": 3,
+            "column": 33
+          }
+        }
+      ],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 3,
+        "column": 39
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "res",
+                  "line": 4,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "writeHead"
+                },
+                "computed": false,
+                "line": 4,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": 200,
+                  "raw": "200",
+                  "line": 4,
+                  "column": 17
+                },
+                {
+                  "type": "Literal",
+                  "value": "OK",
+                  "raw": "\"OK\"",
+                  "line": 4,
+                  "column": 22
+                }
+              ],
+              "line": 4,
+              "column": 3
+            },
+            "line": 4,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "res",
+                  "line": 5,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "end"
+                },
+                "computed": false,
+                "line": 5,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "Hello from JAVAscript server!",
+                  "raw": "\"Hello from JAVAscript server!\"",
+                  "line": 5,
+                  "column": 11
+                }
+              ],
+              "line": 5,
+              "column": 3
+            },
+            "line": 5,
+            "column": 3
+          }
+        ],
+        "line": 3,
+        "column": 44
+      },
+      "line": 3,
+      "column": 1
+    },
+    {
+      "type": "VariableDeclaration",
+      "kind": "const",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "server"
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "MemberExpression",
+              "object": {
+                "type": "Identifier",
+                "name": "http",
+                "line": 8,
+                "column": 16
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "createServer"
+              },
+              "computed": false,
+              "line": 8,
+              "column": 16
+            },
+            "arguments": [
+              {
+                "type": "Identifier",
+                "name": "handler",
+                "line": 8,
+                "column": 34
+              }
+            ],
+            "line": 8,
+            "column": 16
+          }
+        }
+      ],
+      "line": 8,
+      "column": 1
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "object": {
+            "type": "Identifier",
+            "name": "server",
+            "line": 10,
+            "column": 1
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "listen"
+          },
+          "computed": false,
+          "line": 10,
+          "column": 1
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": 3000,
+            "raw": "3000",
+            "line": 10,
+            "column": 15
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "params": [],
+            "body": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 11,
+                        "column": 3
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 11,
+                      "column": 3
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "Server running on port 3000",
+                        "raw": "\"Server running on port 3000\"",
+                        "line": 11,
+                        "column": 15
+                      }
+                    ],
+                    "line": 11,
+                    "column": 3
+                  },
+                  "line": 11,
+                  "column": 3
+                }
+              ],
+              "line": 10,
+              "column": 27
+            },
+            "line": 10,
+            "column": 21
+          }
+        ],
+        "line": 10,
+        "column": 1
+      },
+      "line": 10,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}

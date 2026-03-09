@@ -35,3 +35,7 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 *.class
 *.html
+multiline.txt
+test-output.txt
+output.json
+.java-integration-libs/lib

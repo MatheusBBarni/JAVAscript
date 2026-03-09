@@ -8,6 +8,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 JAVA_OUTPUT="$SCRIPT_DIR/.java-output"
 INTEGRATION_LIBS="$SCRIPT_DIR/.java-integration-libs"
+INTEGRATION_CP="$INTEGRATION_LIBS:$INTEGRATION_LIBS/lib/*"
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -24,7 +25,7 @@ echo ""
 
 # Step 1: Compile integration libs
 echo -e "${YELLOW}[1/3]${NC} Compiling integration libs..."
-javac -d "$INTEGRATION_LIBS" "$INTEGRATION_LIBS"/*.java 2>/dev/null && \
+javac -cp "$INTEGRATION_CP" -d "$INTEGRATION_LIBS" "$INTEGRATION_LIBS"/*.java 2>/dev/null && \
   echo -e "  ${GREEN}✓${NC} Integration libs compiled" || \
   echo -e "  ${RED}✗${NC} Failed to compile integration libs"
 
@@ -34,7 +35,7 @@ COMPILE_PASS=0
 COMPILE_FAIL=0
 for javaFile in "$JAVA_OUTPUT"/*.java; do
   className=$(basename "$javaFile" .java)
-  if javac -cp "$INTEGRATION_LIBS:$JAVA_OUTPUT" -d "$JAVA_OUTPUT" "$javaFile" 2>/dev/null; then
+  if javac -cp "$INTEGRATION_CP:$JAVA_OUTPUT" -d "$JAVA_OUTPUT" "$javaFile" 2>/dev/null; then
     echo -e "  ${GREEN}✓${NC} $className compiled"
     COMPILE_PASS=$((COMPILE_PASS + 1))
   else
@@ -64,7 +65,7 @@ for classFile in "$JAVA_OUTPUT"/*.class; do
 
   # Run with a 5-second timeout (portable, no coreutils needed)
   OUTPUT=$(
-    java -cp "$INTEGRATION_LIBS:$JAVA_OUTPUT" "$className" &
+    java -cp "$INTEGRATION_CP:$JAVA_OUTPUT" "$className" &
     PID=$!
     ( sleep 5; kill $PID 2>/dev/null ) &
     TIMER=$!

@@ -9,6 +9,9 @@ const examplesDir = join(process.cwd(), 'examples');
 const outputDir = join(process.cwd(), 'examples-output');
 const javaOutputDir = join(process.cwd(), '.java-output');
 const integrationLibsDir = join(process.cwd(), '.java-integration-libs');
+const integrationLibJarsDir = join(integrationLibsDir, 'lib', '*');
+// Classpath includes both the integration libs dir (for compiled classes) and lib/* (for JARs)
+const integrationClasspath = `${integrationLibsDir}:${integrationLibJarsDir}`;
 
 if (!existsSync(outputDir)) {
   mkdirSync(outputDir);
@@ -25,7 +28,7 @@ const libJavaFiles = readdirSync(integrationLibsDir)
 if (libJavaFiles.length > 0) {
   const { execSync } = require('child_process');
   try {
-    execSync(`javac -d ${integrationLibsDir} ${libJavaFiles.join(' ')}`);
+    execSync(`javac -cp ${integrationClasspath} -d ${integrationLibsDir} ${libJavaFiles.join(' ')}`);
     console.log('Integration libs compiled successfully.');
   } catch (e: any) {
     console.error('Failed to compile integration libs:', e.stderr?.toString());
@@ -71,7 +74,7 @@ try {
       console.log(`Generated Java Code written to ${javaFilePath}`);
 
       // Attempt to compile
-      exec(`javac -cp ${integrationLibsDir} -d ${javaOutputDir} ${javaFilePath}`, (error: any, stdout: any, stderr: any) => {
+      exec(`javac -cp ${integrationClasspath} -d ${javaOutputDir} ${javaFilePath}`, (error: any, stdout: any, stderr: any) => {
         if (error) {
           console.error(`Compilation error for ${className}.java:\n`, stderr);
         } else {

@@ -1,0 +1,543 @@
+Source: 08-read-write-file.ts
+
+Tokens:
+Token(IMPORT, "import", line=1, col=1)
+Token(L_BRACE, "{", line=1, col=8)
+Token(IDENTIFIER, "readFileSync", line=1, col=10)
+Token(COMMA, ",", line=1, col=22)
+Token(IDENTIFIER, "writeFileSync", line=1, col=24)
+Token(R_BRACE, "}", line=1, col=38)
+Token(FROM, "from", line=1, col=40)
+Token(STRING, "fs", line=1, col=45)
+Token(SEMICOLON, ";", line=1, col=49)
+Token(FUNCTION, "function", line=3, col=1)
+Token(IDENTIFIER, "main", line=3, col=10)
+Token(L_PAREN, "(", line=3, col=14)
+Token(R_PAREN, ")", line=3, col=15)
+Token(COLON, ":", line=3, col=16)
+Token(TYPE_VOID, "void", line=3, col=18)
+Token(L_BRACE, "{", line=3, col=23)
+Token(CONST, "const", line=4, col=3)
+Token(IDENTIFIER, "text", line=4, col=9)
+Token(COLON, ":", line=4, col=13)
+Token(TYPE_STRING, "string", line=4, col=15)
+Token(EQUALS, "=", line=4, col=22)
+Token(STRING, "Hello from JAVAscript!", line=4, col=24)
+Token(SEMICOLON, ";", line=4, col=48)
+Token(IDENTIFIER, "writeFileSync", line=5, col=3)
+Token(L_PAREN, "(", line=5, col=16)
+Token(STRING, "test-output.txt", line=5, col=17)
+Token(COMMA, ",", line=5, col=34)
+Token(IDENTIFIER, "text", line=5, col=36)
+Token(R_PAREN, ")", line=5, col=40)
+Token(SEMICOLON, ";", line=5, col=41)
+Token(IDENTIFIER, "console", line=6, col=3)
+Token(DOT, ".", line=6, col=10)
+Token(IDENTIFIER, "log", line=6, col=11)
+Token(L_PAREN, "(", line=6, col=14)
+Token(STRING, "File written successfully", line=6, col=15)
+Token(R_PAREN, ")", line=6, col=42)
+Token(SEMICOLON, ";", line=6, col=43)
+Token(CONST, "const", line=8, col=3)
+Token(IDENTIFIER, "content", line=8, col=9)
+Token(COLON, ":", line=8, col=16)
+Token(TYPE_STRING, "string", line=8, col=18)
+Token(EQUALS, "=", line=8, col=25)
+Token(IDENTIFIER, "readFileSync", line=8, col=27)
+Token(L_PAREN, "(", line=8, col=39)
+Token(STRING, "test-output.txt", line=8, col=40)
+Token(COMMA, ",", line=8, col=57)
+Token(STRING, "utf-8", line=8, col=59)
+Token(R_PAREN, ")", line=8, col=66)
+Token(SEMICOLON, ";", line=8, col=67)
+Token(IDENTIFIER, "console", line=9, col=3)
+Token(DOT, ".", line=9, col=10)
+Token(IDENTIFIER, "log", line=9, col=11)
+Token(L_PAREN, "(", line=9, col=14)
+Token(IDENTIFIER, "content", line=9, col=15)
+Token(R_PAREN, ")", line=9, col=22)
+Token(SEMICOLON, ";", line=9, col=23)
+Token(CONST, "const", line=11, col=3)
+Token(IDENTIFIER, "lines", line=11, col=9)
+Token(COLON, ":", line=11, col=14)
+Token(TYPE_STRING, "string", line=11, col=16)
+Token(EQUALS, "=", line=11, col=23)
+Token(STRING, "line1\nline2\nline3", line=11, col=25)
+Token(SEMICOLON, ";", line=11, col=46)
+Token(IDENTIFIER, "writeFileSync", line=12, col=3)
+Token(L_PAREN, "(", line=12, col=16)
+Token(STRING, "multiline.txt", line=12, col=17)
+Token(COMMA, ",", line=12, col=32)
+Token(IDENTIFIER, "lines", line=12, col=34)
+Token(R_PAREN, ")", line=12, col=39)
+Token(SEMICOLON, ";", line=12, col=40)
+Token(IDENTIFIER, "console", line=13, col=3)
+Token(DOT, ".", line=13, col=10)
+Token(IDENTIFIER, "log", line=13, col=11)
+Token(L_PAREN, "(", line=13, col=14)
+Token(STRING, "Multiline file written", line=13, col=15)
+Token(R_PAREN, ")", line=13, col=39)
+Token(SEMICOLON, ";", line=13, col=40)
+Token(CONST, "const", line=15, col=3)
+Token(IDENTIFIER, "read", line=15, col=9)
+Token(COLON, ":", line=15, col=13)
+Token(TYPE_STRING, "string", line=15, col=15)
+Token(EQUALS, "=", line=15, col=22)
+Token(IDENTIFIER, "readFileSync", line=15, col=24)
+Token(L_PAREN, "(", line=15, col=36)
+Token(STRING, "multiline.txt", line=15, col=37)
+Token(COMMA, ",", line=15, col=52)
+Token(STRING, "utf-8", line=15, col=54)
+Token(R_PAREN, ")", line=15, col=61)
+Token(SEMICOLON, ";", line=15, col=62)
+Token(IDENTIFIER, "console", line=16, col=3)
+Token(DOT, ".", line=16, col=10)
+Token(IDENTIFIER, "log", line=16, col=11)
+Token(L_PAREN, "(", line=16, col=14)
+Token(IDENTIFIER, "read", line=16, col=15)
+Token(R_PAREN, ")", line=16, col=19)
+Token(SEMICOLON, ";", line=16, col=20)
+Token(R_BRACE, "}", line=17, col=1)
+Token(IDENTIFIER, "main", line=19, col=1)
+Token(L_PAREN, "(", line=19, col=5)
+Token(R_PAREN, ")", line=19, col=6)
+Token(SEMICOLON, ";", line=19, col=7)
+Token(EOF, "", line=20, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "imported": {
+            "type": "Identifier",
+            "name": "readFileSync"
+          },
+          "local": {
+            "type": "Identifier",
+            "name": "readFileSync"
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "imported": {
+            "type": "Identifier",
+            "name": "writeFileSync"
+          },
+          "local": {
+            "type": "Identifier",
+            "name": "writeFileSync"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "fs",
+        "raw": "\"fs\"",
+        "line": 1,
+        "column": 45
+      },
+      "line": 1,
+      "column": 1
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "main"
+      },
+      "params": [],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 3,
+        "column": 18
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "text"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "string",
+                  "line": 4,
+                  "column": 15
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": "Hello from JAVAscript!",
+                  "raw": "\"Hello from JAVAscript!\"",
+                  "line": 4,
+                  "column": 24
+                }
+              }
+            ],
+            "line": 4,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "writeFileSync",
+                "line": 5,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "test-output.txt",
+                  "raw": "\"test-output.txt\"",
+                  "line": 5,
+                  "column": 17
+                },
+                {
+                  "type": "Identifier",
+                  "name": "text",
+                  "line": 5,
+                  "column": 36
+                }
+              ],
+              "line": 5,
+              "column": 3
+            },
+            "line": 5,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 6,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 6,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "File written successfully",
+                  "raw": "\"File written successfully\"",
+                  "line": 6,
+                  "column": 15
+                }
+              ],
+              "line": 6,
+              "column": 3
+            },
+            "line": 6,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "content"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "string",
+                  "line": 8,
+                  "column": 18
+                },
+                "init": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "readFileSync",
+                    "line": 8,
+                    "column": 27
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "test-output.txt",
+                      "raw": "\"test-output.txt\"",
+                      "line": 8,
+                      "column": 40
+                    },
+                    {
+                      "type": "Literal",
+                      "value": "utf-8",
+                      "raw": "\"utf-8\"",
+                      "line": 8,
+                      "column": 59
+                    }
+                  ],
+                  "line": 8,
+                  "column": 27
+                }
+              }
+            ],
+            "line": 8,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 9,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 9,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "content",
+                  "line": 9,
+                  "column": 15
+                }
+              ],
+              "line": 9,
+              "column": 3
+            },
+            "line": 9,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "lines"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "string",
+                  "line": 11,
+                  "column": 16
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": "line1\\nline2\\nline3",
+                  "raw": "\"line1\\nline2\\nline3\"",
+                  "line": 11,
+                  "column": 25
+                }
+              }
+            ],
+            "line": 11,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "writeFileSync",
+                "line": 12,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "multiline.txt",
+                  "raw": "\"multiline.txt\"",
+                  "line": 12,
+                  "column": 17
+                },
+                {
+                  "type": "Identifier",
+                  "name": "lines",
+                  "line": 12,
+                  "column": 34
+                }
+              ],
+              "line": 12,
+              "column": 3
+            },
+            "line": 12,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 13,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 13,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "Multiline file written",
+                  "raw": "\"Multiline file written\"",
+                  "line": 13,
+                  "column": 15
+                }
+              ],
+              "line": 13,
+              "column": 3
+            },
+            "line": 13,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "read"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "string",
+                  "line": 15,
+                  "column": 15
+                },
+                "init": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "readFileSync",
+                    "line": 15,
+                    "column": 24
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "multiline.txt",
+                      "raw": "\"multiline.txt\"",
+                      "line": 15,
+                      "column": 37
+                    },
+                    {
+                      "type": "Literal",
+                      "value": "utf-8",
+                      "raw": "\"utf-8\"",
+                      "line": 15,
+                      "column": 54
+                    }
+                  ],
+                  "line": 15,
+                  "column": 24
+                }
+              }
+            ],
+            "line": 15,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 16,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 16,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "read",
+                  "line": 16,
+                  "column": 15
+                }
+              ],
+              "line": 16,
+              "column": 3
+            },
+            "line": 16,
+            "column": 3
+          }
+        ],
+        "line": 3,
+        "column": 23
+      },
+      "line": 3,
+      "column": 1
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "main",
+          "line": 19,
+          "column": 1
+        },
+        "arguments": [],
+        "line": 19,
+        "column": 1
+      },
+      "line": 19,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}

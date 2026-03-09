@@ -10,6 +10,7 @@
     "typescript": "^5"
   },
   "scripts": {
+    "postinstall": "./scripts/setup-java-deps.sh",
     "start": "bun run src/index.ts",
     "java:test": "./run-java-tests.sh"
   }

@@ -6,6 +6,11 @@ const MODULE_MAP: Record<string, string> = {
   'http': 'Http',
 };
 
+// Maps JS global objects to their Java wrapper class names
+const GLOBAL_REWRITES: Record<string, string> = {
+  'JSON': 'Json',
+};
+
 export class CodeGenerator {
   private indentLevel: number = 0;
   private className: string;
@@ -136,6 +141,8 @@ export class CodeGenerator {
 
   // Track variables that should be StringBuilder for lambda safety
   private stringBuilderVars: Set<string> = new Set();
+  // Track variables that hold JSON parsed objects (for property access rewriting)
+  private jsonObjectVars: Set<string> = new Set();
 
   private visitVariableDeclaration(decl: AST.VariableDeclaration): string {
     return decl.declarations.map(d => {
@@ -152,6 +159,15 @@ export class CodeGenerator {
         this.stringBuilderVars.add(d.id.name);
         const initVal = d.init ? this.visitExpression(d.init) : '""';
         return `StringBuilder ${d.id.name} = new StringBuilder(${initVal});`;
+      }
+
+      // Track variables initialized from Json.parse() for property access rewriting
+      if (d.init && d.init.type === 'CallExpression' && d.init.callee.type === 'MemberExpression'
+        && d.init.callee.object.type === 'Identifier' && d.init.callee.object.name === 'JSON'
+        && d.init.callee.property.name === 'parse') {
+        this.jsonObjectVars.add(d.id.name);
+        const init = ` = ${this.visitExpression(d.init)}`;
+        return `var ${d.id.name}${init};`;
       }
 
       const init = d.init ? ` = ${this.visitExpression(d.init)}` : '';
@@ -246,7 +262,14 @@ export class CodeGenerator {
   // Expressions
   private visitExpression(expr: AST.Expression): string {
     switch (expr.type) {
-      case 'Literal': return expr.raw;
+      case 'Literal': {
+        // Escape inner double quotes in string literals for Java
+        if (typeof expr.value === 'string') {
+          const escaped = expr.value.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+          return `"${escaped}"`;
+        }
+        return expr.raw;
+      }
       case 'Identifier': {
         return expr.name;
       }
@@ -256,6 +279,11 @@ export class CodeGenerator {
         if (expr.operator === '+=' && expr.left.type === 'Identifier' && this.stringBuilderVars.has(expr.left.name)) {
           return `${expr.left.name}.append(${this.visitExpression(expr.right)})`;
         }
+        // Handle JSON object property set: obj.name = "Bob" -> obj.set("name", "Bob")
+        if (expr.operator === '=' && expr.left.type === 'MemberExpression'
+          && expr.left.object.type === 'Identifier' && this.jsonObjectVars.has(expr.left.object.name)) {
+          return `${expr.left.object.name}.set("${expr.left.property.name}", ${this.visitExpression(expr.right)})`;
+        }
         return `${this.visitExpression(expr.left)} ${expr.operator} ${this.visitExpression(expr.right)}`;
       }
       case 'CallExpression': return this.visitCallExpression(expr);
@@ -263,6 +291,14 @@ export class CodeGenerator {
         // Rewrite default-import member expressions: http.get(...) -> Http.get(...)
         if (expr.object.type === 'Identifier' && this.importAliases.has(expr.object.name)) {
           return `${this.importAliases.get(expr.object.name)}.${expr.property.name}`;
+        }
+        // Rewrite JS globals: JSON.parse -> Json.parse
+        if (expr.object.type === 'Identifier' && GLOBAL_REWRITES[expr.object.name]) {
+          return `${GLOBAL_REWRITES[expr.object.name]}.${expr.property.name}`;
+        }
+        // Rewrite JSON object property access: obj.name -> obj.get("name")
+        if (expr.object.type === 'Identifier' && this.jsonObjectVars.has(expr.object.name)) {
+          return `${expr.object.name}.get("${expr.property.name}")`;
         }
         return `${this.visitExpression(expr.object)}.${expr.property.name}`;
       }
