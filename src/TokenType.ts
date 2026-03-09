@@ -18,14 +18,27 @@ export enum TokenType {
   NULL = 'NULL',
   TRUE = 'TRUE',
   FALSE = 'FALSE',
-  
+
+  // Types
+  TYPE_NUMBER = 'TYPE_NUMBER',
+  TYPE_STRING = 'TYPE_STRING',
+  TYPE_BOOLEAN = 'TYPE_BOOLEAN',
+  TYPE_VOID = 'TYPE_VOID',
+  TYPE_ANY = 'TYPE_ANY',
+
+  // TypeScript specific
+  TYPE = 'TYPE',
+  INTERFACE = 'INTERFACE',
+  IMPLEMENTS = 'IMPLEMENTS',
+  EXTENDS = 'EXTENDS',
+
   // Identifiers
   IDENTIFIER = 'IDENTIFIER',
-  
+
   // Literals
   NUMBER = 'NUMBER',
   STRING = 'STRING',
-  
+
   // Operators
   PLUS = 'PLUS',
   MINUS = 'MINUS',
@@ -41,7 +54,11 @@ export enum TokenType {
   LESS_EQ = 'LESS_EQ',
   GREATER = 'GREATER',
   GREATER_EQ = 'GREATER_EQ',
-  
+  ARROW = 'ARROW', // =>
+  PIPE = 'PIPE', // |
+  AMPERSAND = 'AMPERSAND', // &
+  QUESTION = 'QUESTION', // ?
+
   // Punctuation
   L_PAREN = 'L_PAREN', // (
   R_PAREN = 'R_PAREN', // )
@@ -54,7 +71,7 @@ export enum TokenType {
   ELLIPSIS = 'ELLIPSIS', // ...
   SEMICOLON = 'SEMICOLON',
   COLON = 'COLON',
-  
+
   // Special
   EOF = 'EOF',
 }

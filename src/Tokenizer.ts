@@ -29,6 +29,19 @@ export class Tokenizer {
     'null': TokenType.NULL,
     'true': TokenType.TRUE,
     'false': TokenType.FALSE,
+
+    // Types
+    'number': TokenType.TYPE_NUMBER,
+    'string': TokenType.TYPE_STRING,
+    'boolean': TokenType.TYPE_BOOLEAN,
+    'void': TokenType.TYPE_VOID,
+    'any': TokenType.TYPE_ANY,
+
+    // TypeScript specific
+    'type': TokenType.TYPE,
+    'interface': TokenType.INTERFACE,
+    'implements': TokenType.IMPLEMENTS,
+    'extends': TokenType.EXTENDS,
   };
 
   constructor(source: string) {
@@ -55,7 +68,7 @@ export class Tokenizer {
       case '[': this.addToken(TokenType.L_BRACKET); break;
       case ']': this.addToken(TokenType.R_BRACKET); break;
       case ',': this.addToken(TokenType.COMMA); break;
-      case '.': 
+      case '.':
         if (this.match('.') && this.match('.')) {
           this.addToken(TokenType.ELLIPSIS);
         } else {
@@ -65,7 +78,7 @@ export class Tokenizer {
       case ';': this.addToken(TokenType.SEMICOLON); break;
       case ':': this.addToken(TokenType.COLON); break;
       case '*': this.addToken(TokenType.STAR); break;
-      
+
       case '!':
         if (this.match('=')) {
           this.addToken(this.match('=') ? TokenType.BANG_EQ_EQ : TokenType.BANG_EQ);
@@ -76,6 +89,8 @@ export class Tokenizer {
       case '=':
         if (this.match('=')) {
           this.addToken(this.match('=') ? TokenType.EQ_EQ_EQ : TokenType.EQ_EQ);
+        } else if (this.match('>')) {
+          this.addToken(TokenType.ARROW);
         } else {
           this.addToken(TokenType.EQUALS);
         }
@@ -99,6 +114,15 @@ export class Tokenizer {
         break;
       case '-':
         this.addToken(TokenType.MINUS);
+        break;
+      case '|':
+        this.addToken(TokenType.PIPE);
+        break;
+      case '&':
+        this.addToken(TokenType.AMPERSAND);
+        break;
+      case '?':
+        this.addToken(TokenType.QUESTION);
         break;
 
       case ' ':
@@ -135,7 +159,7 @@ export class Tokenizer {
     const text = this.source.substring(this.start, this.current);
     let type = Tokenizer.keywords[text];
     if (!type) type = TokenType.IDENTIFIER;
-    
+
     this.addToken(type);
   }
 
@@ -194,8 +218,8 @@ export class Tokenizer {
 
   private isAlpha(c: string): boolean {
     return (c >= 'a' && c <= 'z') ||
-           (c >= 'A' && c <= 'Z') ||
-            c === '_';
+      (c >= 'A' && c <= 'Z') ||
+      c === '_';
   }
 
   private isDigit(c: string): boolean {

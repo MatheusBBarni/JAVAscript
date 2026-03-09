@@ -13,7 +13,7 @@ try {
   const files = readdirSync(examplesDir);
 
   files.forEach(file => {
-    if (!file.endsWith('.js')) return;
+    if (!file.endsWith('.ts')) return;
 
     const filePath = join(examplesDir, file);
     const code = readFileSync(filePath, 'utf-8');
