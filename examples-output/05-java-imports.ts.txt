@@ -2,16 +2,127 @@ Source: 05-java-imports.ts
 
 Tokens:
 Token(IMPORT, "import", line=1, col=1)
-Token(IDENTIFIER, "TestController", line=1, col=8)
-Token(FROM, "from", line=1, col=23)
-Token(STRING, "com.test.pipelinecoordinator.designtime.controller.TestController", line=1, col=28)
-Token(IMPORT, "import", line=3, col=1)
-Token(L_BRACE, "{", line=3, col=8)
-Token(IDENTIFIER, "TestController", line=3, col=10)
-Token(R_BRACE, "}", line=3, col=25)
-Token(FROM, "from", line=3, col=27)
-Token(STRING, "com.test.pipelinecoordinator.designtime.controller.*", line=3, col=32)
-Token(EOF, "", line=4, col=1)
+Token(IDENTIFIER, "Math", line=1, col=8)
+Token(FROM, "from", line=1, col=13)
+Token(STRING, "java.lang.Math", line=1, col=18)
+Token(FUNCTION, "function", line=3, col=1)
+Token(IDENTIFIER, "main", line=3, col=10)
+Token(L_PAREN, "(", line=3, col=14)
+Token(R_PAREN, ")", line=3, col=15)
+Token(COLON, ":", line=3, col=16)
+Token(TYPE_VOID, "void", line=3, col=18)
+Token(L_BRACE, "{", line=3, col=23)
+Token(CONST, "const", line=4, col=3)
+Token(IDENTIFIER, "pi", line=4, col=9)
+Token(COLON, ":", line=4, col=11)
+Token(TYPE_NUMBER, "number", line=4, col=13)
+Token(EQUALS, "=", line=4, col=20)
+Token(IDENTIFIER, "Math", line=4, col=22)
+Token(DOT, ".", line=4, col=26)
+Token(IDENTIFIER, "PI", line=4, col=27)
+Token(SEMICOLON, ";", line=4, col=29)
+Token(IDENTIFIER, "console", line=5, col=3)
+Token(DOT, ".", line=5, col=10)
+Token(IDENTIFIER, "log", line=5, col=11)
+Token(L_PAREN, "(", line=5, col=14)
+Token(IDENTIFIER, "pi", line=5, col=15)
+Token(R_PAREN, ")", line=5, col=17)
+Token(SEMICOLON, ";", line=5, col=18)
+Token(CONST, "const", line=7, col=3)
+Token(IDENTIFIER, "sqrtTwo", line=7, col=9)
+Token(COLON, ":", line=7, col=16)
+Token(TYPE_NUMBER, "number", line=7, col=18)
+Token(EQUALS, "=", line=7, col=25)
+Token(IDENTIFIER, "Math", line=7, col=27)
+Token(DOT, ".", line=7, col=31)
+Token(IDENTIFIER, "sqrt", line=7, col=32)
+Token(L_PAREN, "(", line=7, col=36)
+Token(NUMBER, "2", line=7, col=37)
+Token(R_PAREN, ")", line=7, col=38)
+Token(SEMICOLON, ";", line=7, col=39)
+Token(IDENTIFIER, "console", line=8, col=3)
+Token(DOT, ".", line=8, col=10)
+Token(IDENTIFIER, "log", line=8, col=11)
+Token(L_PAREN, "(", line=8, col=14)
+Token(IDENTIFIER, "sqrtTwo", line=8, col=15)
+Token(R_PAREN, ")", line=8, col=22)
+Token(SEMICOLON, ";", line=8, col=23)
+Token(CONST, "const", line=10, col=3)
+Token(IDENTIFIER, "maxVal", line=10, col=9)
+Token(COLON, ":", line=10, col=15)
+Token(TYPE_NUMBER, "number", line=10, col=17)
+Token(EQUALS, "=", line=10, col=24)
+Token(IDENTIFIER, "Math", line=10, col=26)
+Token(DOT, ".", line=10, col=30)
+Token(IDENTIFIER, "max", line=10, col=31)
+Token(L_PAREN, "(", line=10, col=34)
+Token(NUMBER, "10", line=10, col=35)
+Token(COMMA, ",", line=10, col=37)
+Token(NUMBER, "20", line=10, col=39)
+Token(R_PAREN, ")", line=10, col=41)
+Token(SEMICOLON, ";", line=10, col=42)
+Token(IDENTIFIER, "console", line=11, col=3)
+Token(DOT, ".", line=11, col=10)
+Token(IDENTIFIER, "log", line=11, col=11)
+Token(L_PAREN, "(", line=11, col=14)
+Token(IDENTIFIER, "maxVal", line=11, col=15)
+Token(R_PAREN, ")", line=11, col=21)
+Token(SEMICOLON, ";", line=11, col=22)
+Token(CONST, "const", line=13, col=3)
+Token(IDENTIFIER, "negative", line=13, col=9)
+Token(COLON, ":", line=13, col=17)
+Token(TYPE_NUMBER, "number", line=13, col=19)
+Token(EQUALS, "=", line=13, col=26)
+Token(NUMBER, "0", line=13, col=28)
+Token(MINUS, "-", line=13, col=30)
+Token(NUMBER, "42", line=13, col=32)
+Token(SEMICOLON, ";", line=13, col=34)
+Token(CONST, "const", line=14, col=3)
+Token(IDENTIFIER, "absVal", line=14, col=9)
+Token(COLON, ":", line=14, col=15)
+Token(TYPE_NUMBER, "number", line=14, col=17)
+Token(EQUALS, "=", line=14, col=24)
+Token(IDENTIFIER, "Math", line=14, col=26)
+Token(DOT, ".", line=14, col=30)
+Token(IDENTIFIER, "abs", line=14, col=31)
+Token(L_PAREN, "(", line=14, col=34)
+Token(IDENTIFIER, "negative", line=14, col=35)
+Token(R_PAREN, ")", line=14, col=43)
+Token(SEMICOLON, ";", line=14, col=44)
+Token(IDENTIFIER, "console", line=15, col=3)
+Token(DOT, ".", line=15, col=10)
+Token(IDENTIFIER, "log", line=15, col=11)
+Token(L_PAREN, "(", line=15, col=14)
+Token(IDENTIFIER, "absVal", line=15, col=15)
+Token(R_PAREN, ")", line=15, col=21)
+Token(SEMICOLON, ";", line=15, col=22)
+Token(CONST, "const", line=17, col=3)
+Token(IDENTIFIER, "power", line=17, col=9)
+Token(COLON, ":", line=17, col=14)
+Token(TYPE_NUMBER, "number", line=17, col=16)
+Token(EQUALS, "=", line=17, col=23)
+Token(IDENTIFIER, "Math", line=17, col=25)
+Token(DOT, ".", line=17, col=29)
+Token(IDENTIFIER, "pow", line=17, col=30)
+Token(L_PAREN, "(", line=17, col=33)
+Token(NUMBER, "2", line=17, col=34)
+Token(COMMA, ",", line=17, col=35)
+Token(NUMBER, "10", line=17, col=37)
+Token(R_PAREN, ")", line=17, col=39)
+Token(SEMICOLON, ";", line=17, col=40)
+Token(IDENTIFIER, "console", line=18, col=3)
+Token(DOT, ".", line=18, col=10)
+Token(IDENTIFIER, "log", line=18, col=11)
+Token(L_PAREN, "(", line=18, col=14)
+Token(IDENTIFIER, "power", line=18, col=15)
+Token(R_PAREN, ")", line=18, col=20)
+Token(SEMICOLON, ";", line=18, col=21)
+Token(R_BRACE, "}", line=19, col=1)
+Token(IDENTIFIER, "main", line=21, col=1)
+Token(L_PAREN, "(", line=21, col=5)
+Token(R_PAREN, ")", line=21, col=6)
+Token(SEMICOLON, ";", line=21, col=7)
+Token(EOF, "", line=22, col=1)
 
 
 AST:
@@ -25,56 +136,527 @@ AST:
           "type": "ImportDefaultSpecifier",
           "local": {
             "type": "Identifier",
-            "name": "TestController"
+            "name": "Math"
           }
         }
       ],
       "source": {
         "type": "JavaPackageSource",
         "path": [
-          "com",
-          "test",
-          "pipelinecoordinator",
-          "designtime",
-          "controller",
-          "TestController"
+          "java",
+          "lang",
+          "Math"
         ],
         "wildcard": false,
         "line": 1,
-        "column": 28
+        "column": 18
       },
       "line": 1,
       "column": 1
     },
     {
-      "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportSpecifier",
-          "imported": {
-            "type": "Identifier",
-            "name": "TestController"
-          },
-          "local": {
-            "type": "Identifier",
-            "name": "TestController"
-          }
-        }
-      ],
-      "source": {
-        "type": "JavaPackageSource",
-        "path": [
-          "com",
-          "test",
-          "pipelinecoordinator",
-          "designtime",
-          "controller"
-        ],
-        "wildcard": true,
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "main"
+      },
+      "params": [],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
         "line": 3,
-        "column": 32
+        "column": 18
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "pi"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "number",
+                  "line": 4,
+                  "column": 13
+                },
+                "init": {
+                  "type": "MemberExpression",
+                  "object": {
+                    "type": "Identifier",
+                    "name": "Math",
+                    "line": 4,
+                    "column": 22
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "PI"
+                  },
+                  "computed": false,
+                  "line": 4,
+                  "column": 22
+                }
+              }
+            ],
+            "line": 4,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 5,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 5,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "pi",
+                  "line": 5,
+                  "column": 15
+                }
+              ],
+              "line": 5,
+              "column": 3
+            },
+            "line": 5,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "sqrtTwo"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "number",
+                  "line": 7,
+                  "column": 18
+                },
+                "init": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Math",
+                      "line": 7,
+                      "column": 27
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "sqrt"
+                    },
+                    "computed": false,
+                    "line": 7,
+                    "column": 27
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": 2,
+                      "raw": "2",
+                      "line": 7,
+                      "column": 37
+                    }
+                  ],
+                  "line": 7,
+                  "column": 27
+                }
+              }
+            ],
+            "line": 7,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 8,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 8,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "sqrtTwo",
+                  "line": 8,
+                  "column": 15
+                }
+              ],
+              "line": 8,
+              "column": 3
+            },
+            "line": 8,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "maxVal"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "number",
+                  "line": 10,
+                  "column": 17
+                },
+                "init": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Math",
+                      "line": 10,
+                      "column": 26
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "max"
+                    },
+                    "computed": false,
+                    "line": 10,
+                    "column": 26
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": 10,
+                      "raw": "10",
+                      "line": 10,
+                      "column": 35
+                    },
+                    {
+                      "type": "Literal",
+                      "value": 20,
+                      "raw": "20",
+                      "line": 10,
+                      "column": 39
+                    }
+                  ],
+                  "line": 10,
+                  "column": 26
+                }
+              }
+            ],
+            "line": 10,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 11,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 11,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "maxVal",
+                  "line": 11,
+                  "column": 15
+                }
+              ],
+              "line": 11,
+              "column": 3
+            },
+            "line": 11,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "negative"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "number",
+                  "line": 13,
+                  "column": 19
+                },
+                "init": {
+                  "type": "BinaryExpression",
+                  "operator": "-",
+                  "left": {
+                    "type": "Literal",
+                    "value": 0,
+                    "raw": "0",
+                    "line": 13,
+                    "column": 28
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 42,
+                    "raw": "42",
+                    "line": 13,
+                    "column": 32
+                  },
+                  "line": 13,
+                  "column": 28
+                }
+              }
+            ],
+            "line": 13,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "absVal"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "number",
+                  "line": 14,
+                  "column": 17
+                },
+                "init": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Math",
+                      "line": 14,
+                      "column": 26
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "abs"
+                    },
+                    "computed": false,
+                    "line": 14,
+                    "column": 26
+                  },
+                  "arguments": [
+                    {
+                      "type": "Identifier",
+                      "name": "negative",
+                      "line": 14,
+                      "column": 35
+                    }
+                  ],
+                  "line": 14,
+                  "column": 26
+                }
+              }
+            ],
+            "line": 14,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 15,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 15,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "absVal",
+                  "line": 15,
+                  "column": 15
+                }
+              ],
+              "line": 15,
+              "column": 3
+            },
+            "line": 15,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "power"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "number",
+                  "line": 17,
+                  "column": 16
+                },
+                "init": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "Math",
+                      "line": 17,
+                      "column": 25
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "pow"
+                    },
+                    "computed": false,
+                    "line": 17,
+                    "column": 25
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": 2,
+                      "raw": "2",
+                      "line": 17,
+                      "column": 34
+                    },
+                    {
+                      "type": "Literal",
+                      "value": 10,
+                      "raw": "10",
+                      "line": 17,
+                      "column": 37
+                    }
+                  ],
+                  "line": 17,
+                  "column": 25
+                }
+              }
+            ],
+            "line": 17,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 18,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 18,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "power",
+                  "line": 18,
+                  "column": 15
+                }
+              ],
+              "line": 18,
+              "column": 3
+            },
+            "line": 18,
+            "column": 3
+          }
+        ],
+        "line": 3,
+        "column": 23
       },
       "line": 3,
+      "column": 1
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "main",
+          "line": 21,
+          "column": 1
+        },
+        "arguments": [],
+        "line": 21,
+        "column": 1
+      },
+      "line": 21,
       "column": 1
     }
   ],

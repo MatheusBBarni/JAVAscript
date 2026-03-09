@@ -66,17 +66,17 @@ TypeScript `fs` and `http` modules are mapped to Java wrapper libraries in `.jav
 
 ## Examples
 
-| #   | File                    | Tests                                | Status          |
-| --- | ----------------------- | ------------------------------------ | --------------- |
-| 01  | `01-main-function.ts`   | Variables, if/else, console.log      | ✅              |
-| 02  | `02-sum.ts`             | Functions, return values             | ✅              |
-| 03  | `03-imports.ts`         | HTTP GET, file write, callbacks      | ✅              |
-| 04  | `04-exports.ts`         | Classes, exports                     | ✅              |
-| 05  | `05-java-imports.ts`    | Java package imports                 | ⚠️ External pkg |
-| 06  | `06-json-and-files.ts`  | JSON.parse, JSON.stringify, file I/O | ✅              |
-| 07  | `07-http-server.ts`     | HTTP server, createServer, listen    | ✅              |
-| 08  | `08-read-write-file.ts` | readFileSync, writeFileSync          | ✅              |
-| 09  | `09-http-server-api.ts` | REST API with routing & query params | ✅              |
+| #   | File                    | Tests                                   | Status |
+| --- | ----------------------- | --------------------------------------- | ------ |
+| 01  | `01-main-function.ts`   | Variables, if/else, console.log         | ✅     |
+| 02  | `02-sum.ts`             | Functions, return values                | ✅     |
+| 03  | `03-imports.ts`         | HTTP GET, file write, callbacks         | ✅     |
+| 04  | `04-exports.ts`         | Classes, exports                        | ✅     |
+| 05  | `05-java-imports.ts`    | Java package imports (`java.lang.Math`) | ✅     |
+| 06  | `06-json-and-files.ts`  | JSON.parse, JSON.stringify, file I/O    | ✅     |
+| 07  | `07-http-server.ts`     | HTTP server, createServer, listen       | ✅     |
+| 08  | `08-read-write-file.ts` | readFileSync, writeFileSync             | ✅     |
+| 09  | `09-http-server-api.ts` | REST API with routing & query params    | ✅     |
 
 ## Project Structure
 
