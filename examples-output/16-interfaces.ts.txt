@@ -1,0 +1,406 @@
+Source: 16-interfaces.ts
+
+Tokens:
+Token(INTERFACE, "interface", line=1, col=1)
+Token(IDENTIFIER, "User", line=1, col=11)
+Token(L_BRACE, "{", line=1, col=16)
+Token(IDENTIFIER, "name", line=2, col=3)
+Token(COLON, ":", line=2, col=7)
+Token(TYPE_STRING, "string", line=2, col=9)
+Token(SEMICOLON, ";", line=2, col=15)
+Token(IDENTIFIER, "age", line=3, col=3)
+Token(COLON, ":", line=3, col=6)
+Token(TYPE_NUMBER, "number", line=3, col=8)
+Token(SEMICOLON, ";", line=3, col=14)
+Token(R_BRACE, "}", line=4, col=1)
+Token(FUNCTION, "function", line=6, col=1)
+Token(IDENTIFIER, "greet", line=6, col=10)
+Token(L_PAREN, "(", line=6, col=15)
+Token(IDENTIFIER, "user", line=6, col=16)
+Token(COLON, ":", line=6, col=20)
+Token(IDENTIFIER, "User", line=6, col=22)
+Token(R_PAREN, ")", line=6, col=26)
+Token(COLON, ":", line=6, col=27)
+Token(TYPE_STRING, "string", line=6, col=29)
+Token(L_BRACE, "{", line=6, col=36)
+Token(RETURN, "return", line=7, col=3)
+Token(STRING, "Hello ", line=7, col=10)
+Token(PLUS, "+", line=7, col=19)
+Token(IDENTIFIER, "user", line=7, col=21)
+Token(DOT, ".", line=7, col=25)
+Token(IDENTIFIER, "name", line=7, col=26)
+Token(SEMICOLON, ";", line=7, col=30)
+Token(R_BRACE, "}", line=8, col=1)
+Token(FUNCTION, "function", line=10, col=1)
+Token(IDENTIFIER, "main", line=10, col=10)
+Token(L_PAREN, "(", line=10, col=14)
+Token(R_PAREN, ")", line=10, col=15)
+Token(COLON, ":", line=10, col=16)
+Token(TYPE_VOID, "void", line=10, col=18)
+Token(L_BRACE, "{", line=10, col=23)
+Token(CONST, "const", line=11, col=3)
+Token(IDENTIFIER, "user", line=11, col=9)
+Token(COLON, ":", line=11, col=13)
+Token(IDENTIFIER, "User", line=11, col=15)
+Token(EQUALS, "=", line=11, col=20)
+Token(NEW, "new", line=11, col=22)
+Token(IDENTIFIER, "User", line=11, col=26)
+Token(L_PAREN, "(", line=11, col=30)
+Token(R_PAREN, ")", line=11, col=31)
+Token(SEMICOLON, ";", line=11, col=32)
+Token(IDENTIFIER, "user", line=12, col=3)
+Token(DOT, ".", line=12, col=7)
+Token(IDENTIFIER, "name", line=12, col=8)
+Token(EQUALS, "=", line=12, col=13)
+Token(STRING, "Alice", line=12, col=15)
+Token(SEMICOLON, ";", line=12, col=22)
+Token(IDENTIFIER, "user", line=13, col=3)
+Token(DOT, ".", line=13, col=7)
+Token(IDENTIFIER, "age", line=13, col=8)
+Token(EQUALS, "=", line=13, col=12)
+Token(NUMBER, "30", line=13, col=14)
+Token(SEMICOLON, ";", line=13, col=16)
+Token(IDENTIFIER, "console", line=14, col=3)
+Token(DOT, ".", line=14, col=10)
+Token(IDENTIFIER, "log", line=14, col=11)
+Token(L_PAREN, "(", line=14, col=14)
+Token(IDENTIFIER, "greet", line=14, col=15)
+Token(L_PAREN, "(", line=14, col=20)
+Token(IDENTIFIER, "user", line=14, col=21)
+Token(R_PAREN, ")", line=14, col=25)
+Token(R_PAREN, ")", line=14, col=26)
+Token(SEMICOLON, ";", line=14, col=27)
+Token(R_BRACE, "}", line=15, col=1)
+Token(IDENTIFIER, "main", line=17, col=1)
+Token(L_PAREN, "(", line=17, col=5)
+Token(R_PAREN, ")", line=17, col=6)
+Token(SEMICOLON, ";", line=17, col=7)
+Token(EOF, "", line=18, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "InterfaceDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "User",
+        "line": 1,
+        "column": 1
+      },
+      "body": {
+        "type": "InterfaceBody",
+        "properties": [
+          {
+            "type": "PropertySignature",
+            "key": {
+              "type": "Identifier",
+              "name": "name",
+              "line": 2,
+              "column": 15
+            },
+            "typeAnnotation": {
+              "type": "KeywordType",
+              "name": "string",
+              "line": 2,
+              "column": 9
+            },
+            "line": 2,
+            "column": 15
+          },
+          {
+            "type": "PropertySignature",
+            "key": {
+              "type": "Identifier",
+              "name": "age",
+              "line": 3,
+              "column": 14
+            },
+            "typeAnnotation": {
+              "type": "KeywordType",
+              "name": "number",
+              "line": 3,
+              "column": 8
+            },
+            "line": 3,
+            "column": 14
+          }
+        ],
+        "line": 1,
+        "column": 1
+      },
+      "line": 1,
+      "column": 1
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "greet"
+      },
+      "params": [
+        {
+          "type": "Identifier",
+          "name": "user",
+          "typeAnnotation": {
+            "type": "TypeReference",
+            "typeName": {
+              "type": "Identifier",
+              "name": "User",
+              "line": 6,
+              "column": 22
+            },
+            "line": 6,
+            "column": 22
+          }
+        }
+      ],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "string",
+        "line": 6,
+        "column": 29
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "ReturnStatement",
+            "argument": {
+              "type": "BinaryExpression",
+              "operator": "+",
+              "left": {
+                "type": "Literal",
+                "value": "Hello ",
+                "raw": "\"Hello \"",
+                "line": 7,
+                "column": 10
+              },
+              "right": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "user",
+                  "line": 7,
+                  "column": 21
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "name"
+                },
+                "computed": false,
+                "line": 7,
+                "column": 21
+              },
+              "line": 7,
+              "column": 10
+            },
+            "line": 7,
+            "column": 3
+          }
+        ],
+        "line": 6,
+        "column": 36
+      },
+      "line": 6,
+      "column": 1
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "main"
+      },
+      "params": [],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 10,
+        "column": 18
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "user"
+                },
+                "typeAnnotation": {
+                  "type": "TypeReference",
+                  "typeName": {
+                    "type": "Identifier",
+                    "name": "User",
+                    "line": 11,
+                    "column": 15
+                  },
+                  "line": 11,
+                  "column": 15
+                },
+                "init": {
+                  "type": "NewExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "User",
+                    "line": 11,
+                    "column": 26
+                  },
+                  "arguments": [],
+                  "line": 11,
+                  "column": 22
+                }
+              }
+            ],
+            "line": 11,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "AssignmentExpression",
+              "operator": "=",
+              "left": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "user",
+                  "line": 12,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "name"
+                },
+                "computed": false,
+                "line": 12,
+                "column": 3
+              },
+              "right": {
+                "type": "Literal",
+                "value": "Alice",
+                "raw": "\"Alice\"",
+                "line": 12,
+                "column": 15
+              },
+              "line": 12,
+              "column": 3
+            },
+            "line": 12,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "AssignmentExpression",
+              "operator": "=",
+              "left": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "user",
+                  "line": 13,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "age"
+                },
+                "computed": false,
+                "line": 13,
+                "column": 3
+              },
+              "right": {
+                "type": "Literal",
+                "value": 30,
+                "raw": "30",
+                "line": 13,
+                "column": 14
+              },
+              "line": 13,
+              "column": 3
+            },
+            "line": 13,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 14,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 14,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "greet",
+                    "line": 14,
+                    "column": 15
+                  },
+                  "arguments": [
+                    {
+                      "type": "Identifier",
+                      "name": "user",
+                      "line": 14,
+                      "column": 21
+                    }
+                  ],
+                  "line": 14,
+                  "column": 15
+                }
+              ],
+              "line": 14,
+              "column": 3
+            },
+            "line": 14,
+            "column": 3
+          }
+        ],
+        "line": 10,
+        "column": 23
+      },
+      "line": 10,
+      "column": 1
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "main",
+          "line": 17,
+          "column": 1
+        },
+        "arguments": [],
+        "line": 17,
+        "column": 1
+      },
+      "line": 17,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}

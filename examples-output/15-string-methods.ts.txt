@@ -1,0 +1,888 @@
+Source: 15-string-methods.ts
+
+Tokens:
+Token(FUNCTION, "function", line=1, col=1)
+Token(IDENTIFIER, "main", line=1, col=10)
+Token(L_PAREN, "(", line=1, col=14)
+Token(R_PAREN, ")", line=1, col=15)
+Token(COLON, ":", line=1, col=16)
+Token(TYPE_VOID, "void", line=1, col=18)
+Token(L_BRACE, "{", line=1, col=23)
+Token(CONST, "const", line=2, col=3)
+Token(IDENTIFIER, "greeting", line=2, col=9)
+Token(COLON, ":", line=2, col=17)
+Token(TYPE_STRING, "string", line=2, col=19)
+Token(EQUALS, "=", line=2, col=26)
+Token(STRING, "Hello, World!", line=2, col=28)
+Token(SEMICOLON, ";", line=2, col=43)
+Token(IDENTIFIER, "console", line=4, col=3)
+Token(DOT, ".", line=4, col=10)
+Token(IDENTIFIER, "log", line=4, col=11)
+Token(L_PAREN, "(", line=4, col=14)
+Token(STRING, "length:", line=4, col=15)
+Token(R_PAREN, ")", line=4, col=24)
+Token(SEMICOLON, ";", line=4, col=25)
+Token(IDENTIFIER, "console", line=5, col=3)
+Token(DOT, ".", line=5, col=10)
+Token(IDENTIFIER, "log", line=5, col=11)
+Token(L_PAREN, "(", line=5, col=14)
+Token(IDENTIFIER, "greeting", line=5, col=15)
+Token(DOT, ".", line=5, col=23)
+Token(IDENTIFIER, "length", line=5, col=24)
+Token(R_PAREN, ")", line=5, col=30)
+Token(SEMICOLON, ";", line=5, col=31)
+Token(IDENTIFIER, "console", line=7, col=3)
+Token(DOT, ".", line=7, col=10)
+Token(IDENTIFIER, "log", line=7, col=11)
+Token(L_PAREN, "(", line=7, col=14)
+Token(STRING, "upper:", line=7, col=15)
+Token(R_PAREN, ")", line=7, col=23)
+Token(SEMICOLON, ";", line=7, col=24)
+Token(IDENTIFIER, "console", line=8, col=3)
+Token(DOT, ".", line=8, col=10)
+Token(IDENTIFIER, "log", line=8, col=11)
+Token(L_PAREN, "(", line=8, col=14)
+Token(IDENTIFIER, "greeting", line=8, col=15)
+Token(DOT, ".", line=8, col=23)
+Token(IDENTIFIER, "toUpperCase", line=8, col=24)
+Token(L_PAREN, "(", line=8, col=35)
+Token(R_PAREN, ")", line=8, col=36)
+Token(R_PAREN, ")", line=8, col=37)
+Token(SEMICOLON, ";", line=8, col=38)
+Token(IDENTIFIER, "console", line=10, col=3)
+Token(DOT, ".", line=10, col=10)
+Token(IDENTIFIER, "log", line=10, col=11)
+Token(L_PAREN, "(", line=10, col=14)
+Token(STRING, "substring:", line=10, col=15)
+Token(R_PAREN, ")", line=10, col=27)
+Token(SEMICOLON, ";", line=10, col=28)
+Token(IDENTIFIER, "console", line=11, col=3)
+Token(DOT, ".", line=11, col=10)
+Token(IDENTIFIER, "log", line=11, col=11)
+Token(L_PAREN, "(", line=11, col=14)
+Token(IDENTIFIER, "greeting", line=11, col=15)
+Token(DOT, ".", line=11, col=23)
+Token(IDENTIFIER, "substring", line=11, col=24)
+Token(L_PAREN, "(", line=11, col=33)
+Token(NUMBER, "0", line=11, col=34)
+Token(COMMA, ",", line=11, col=35)
+Token(NUMBER, "5", line=11, col=37)
+Token(R_PAREN, ")", line=11, col=38)
+Token(R_PAREN, ")", line=11, col=39)
+Token(SEMICOLON, ";", line=11, col=40)
+Token(IDENTIFIER, "console", line=13, col=3)
+Token(DOT, ".", line=13, col=10)
+Token(IDENTIFIER, "log", line=13, col=11)
+Token(L_PAREN, "(", line=13, col=14)
+Token(STRING, "includes:", line=13, col=15)
+Token(R_PAREN, ")", line=13, col=26)
+Token(SEMICOLON, ";", line=13, col=27)
+Token(IDENTIFIER, "console", line=14, col=3)
+Token(DOT, ".", line=14, col=10)
+Token(IDENTIFIER, "log", line=14, col=11)
+Token(L_PAREN, "(", line=14, col=14)
+Token(IDENTIFIER, "greeting", line=14, col=15)
+Token(DOT, ".", line=14, col=23)
+Token(IDENTIFIER, "includes", line=14, col=24)
+Token(L_PAREN, "(", line=14, col=32)
+Token(STRING, "World", line=14, col=33)
+Token(R_PAREN, ")", line=14, col=40)
+Token(R_PAREN, ")", line=14, col=41)
+Token(SEMICOLON, ";", line=14, col=42)
+Token(IDENTIFIER, "console", line=15, col=3)
+Token(DOT, ".", line=15, col=10)
+Token(IDENTIFIER, "log", line=15, col=11)
+Token(L_PAREN, "(", line=15, col=14)
+Token(IDENTIFIER, "greeting", line=15, col=15)
+Token(DOT, ".", line=15, col=23)
+Token(IDENTIFIER, "includes", line=15, col=24)
+Token(L_PAREN, "(", line=15, col=32)
+Token(STRING, "Java", line=15, col=33)
+Token(R_PAREN, ")", line=15, col=39)
+Token(R_PAREN, ")", line=15, col=40)
+Token(SEMICOLON, ";", line=15, col=41)
+Token(IDENTIFIER, "console", line=17, col=3)
+Token(DOT, ".", line=17, col=10)
+Token(IDENTIFIER, "log", line=17, col=11)
+Token(L_PAREN, "(", line=17, col=14)
+Token(STRING, "replace:", line=17, col=15)
+Token(R_PAREN, ")", line=17, col=25)
+Token(SEMICOLON, ";", line=17, col=26)
+Token(IDENTIFIER, "console", line=18, col=3)
+Token(DOT, ".", line=18, col=10)
+Token(IDENTIFIER, "log", line=18, col=11)
+Token(L_PAREN, "(", line=18, col=14)
+Token(IDENTIFIER, "greeting", line=18, col=15)
+Token(DOT, ".", line=18, col=23)
+Token(IDENTIFIER, "replace", line=18, col=24)
+Token(L_PAREN, "(", line=18, col=31)
+Token(STRING, "World", line=18, col=32)
+Token(COMMA, ",", line=18, col=39)
+Token(STRING, "Java", line=18, col=41)
+Token(R_PAREN, ")", line=18, col=47)
+Token(R_PAREN, ")", line=18, col=48)
+Token(SEMICOLON, ";", line=18, col=49)
+Token(IDENTIFIER, "console", line=20, col=3)
+Token(DOT, ".", line=20, col=10)
+Token(IDENTIFIER, "log", line=20, col=11)
+Token(L_PAREN, "(", line=20, col=14)
+Token(STRING, "split:", line=20, col=15)
+Token(R_PAREN, ")", line=20, col=23)
+Token(SEMICOLON, ";", line=20, col=24)
+Token(CONST, "const", line=21, col=3)
+Token(IDENTIFIER, "parts", line=21, col=9)
+Token(COLON, ":", line=21, col=14)
+Token(TYPE_STRING, "string", line=21, col=16)
+Token(L_BRACKET, "[", line=21, col=22)
+Token(R_BRACKET, "]", line=21, col=23)
+Token(EQUALS, "=", line=21, col=25)
+Token(IDENTIFIER, "greeting", line=21, col=27)
+Token(DOT, ".", line=21, col=35)
+Token(IDENTIFIER, "split", line=21, col=36)
+Token(L_PAREN, "(", line=21, col=41)
+Token(STRING, ", ", line=21, col=42)
+Token(R_PAREN, ")", line=21, col=46)
+Token(SEMICOLON, ";", line=21, col=47)
+Token(IDENTIFIER, "console", line=22, col=3)
+Token(DOT, ".", line=22, col=10)
+Token(IDENTIFIER, "log", line=22, col=11)
+Token(L_PAREN, "(", line=22, col=14)
+Token(IDENTIFIER, "parts", line=22, col=15)
+Token(DOT, ".", line=22, col=20)
+Token(IDENTIFIER, "length", line=22, col=21)
+Token(R_PAREN, ")", line=22, col=27)
+Token(SEMICOLON, ";", line=22, col=28)
+Token(R_BRACE, "}", line=23, col=1)
+Token(IDENTIFIER, "main", line=25, col=1)
+Token(L_PAREN, "(", line=25, col=5)
+Token(R_PAREN, ")", line=25, col=6)
+Token(SEMICOLON, ";", line=25, col=7)
+Token(EOF, "", line=26, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "main"
+      },
+      "params": [],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 1,
+        "column": 18
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "greeting"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "string",
+                  "line": 2,
+                  "column": 19
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": "Hello, World!",
+                  "raw": "\"Hello, World!\"",
+                  "line": 2,
+                  "column": 28
+                }
+              }
+            ],
+            "line": 2,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 4,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 4,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "length:",
+                  "raw": "\"length:\"",
+                  "line": 4,
+                  "column": 15
+                }
+              ],
+              "line": 4,
+              "column": 3
+            },
+            "line": 4,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 5,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 5,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "MemberExpression",
+                  "object": {
+                    "type": "Identifier",
+                    "name": "greeting",
+                    "line": 5,
+                    "column": 15
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "length"
+                  },
+                  "computed": false,
+                  "line": 5,
+                  "column": 15
+                }
+              ],
+              "line": 5,
+              "column": 3
+            },
+            "line": 5,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 7,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 7,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "upper:",
+                  "raw": "\"upper:\"",
+                  "line": 7,
+                  "column": 15
+                }
+              ],
+              "line": 7,
+              "column": 3
+            },
+            "line": 7,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 8,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 8,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "greeting",
+                      "line": 8,
+                      "column": 15
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "toUpperCase"
+                    },
+                    "computed": false,
+                    "line": 8,
+                    "column": 15
+                  },
+                  "arguments": [],
+                  "line": 8,
+                  "column": 15
+                }
+              ],
+              "line": 8,
+              "column": 3
+            },
+            "line": 8,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 10,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 10,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "substring:",
+                  "raw": "\"substring:\"",
+                  "line": 10,
+                  "column": 15
+                }
+              ],
+              "line": 10,
+              "column": 3
+            },
+            "line": 10,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 11,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 11,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "greeting",
+                      "line": 11,
+                      "column": 15
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "substring"
+                    },
+                    "computed": false,
+                    "line": 11,
+                    "column": 15
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": 0,
+                      "raw": "0",
+                      "line": 11,
+                      "column": 34
+                    },
+                    {
+                      "type": "Literal",
+                      "value": 5,
+                      "raw": "5",
+                      "line": 11,
+                      "column": 37
+                    }
+                  ],
+                  "line": 11,
+                  "column": 15
+                }
+              ],
+              "line": 11,
+              "column": 3
+            },
+            "line": 11,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 13,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 13,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "includes:",
+                  "raw": "\"includes:\"",
+                  "line": 13,
+                  "column": 15
+                }
+              ],
+              "line": 13,
+              "column": 3
+            },
+            "line": 13,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 14,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 14,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "greeting",
+                      "line": 14,
+                      "column": 15
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "includes"
+                    },
+                    "computed": false,
+                    "line": 14,
+                    "column": 15
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "World",
+                      "raw": "\"World\"",
+                      "line": 14,
+                      "column": 33
+                    }
+                  ],
+                  "line": 14,
+                  "column": 15
+                }
+              ],
+              "line": 14,
+              "column": 3
+            },
+            "line": 14,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 15,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 15,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "greeting",
+                      "line": 15,
+                      "column": 15
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "includes"
+                    },
+                    "computed": false,
+                    "line": 15,
+                    "column": 15
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "Java",
+                      "raw": "\"Java\"",
+                      "line": 15,
+                      "column": 33
+                    }
+                  ],
+                  "line": 15,
+                  "column": 15
+                }
+              ],
+              "line": 15,
+              "column": 3
+            },
+            "line": 15,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 17,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 17,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "replace:",
+                  "raw": "\"replace:\"",
+                  "line": 17,
+                  "column": 15
+                }
+              ],
+              "line": 17,
+              "column": 3
+            },
+            "line": 17,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 18,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 18,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "greeting",
+                      "line": 18,
+                      "column": 15
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "replace"
+                    },
+                    "computed": false,
+                    "line": 18,
+                    "column": 15
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "World",
+                      "raw": "\"World\"",
+                      "line": 18,
+                      "column": 32
+                    },
+                    {
+                      "type": "Literal",
+                      "value": "Java",
+                      "raw": "\"Java\"",
+                      "line": 18,
+                      "column": 41
+                    }
+                  ],
+                  "line": 18,
+                  "column": 15
+                }
+              ],
+              "line": 18,
+              "column": 3
+            },
+            "line": 18,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 20,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 20,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "split:",
+                  "raw": "\"split:\"",
+                  "line": 20,
+                  "column": 15
+                }
+              ],
+              "line": 20,
+              "column": 3
+            },
+            "line": 20,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "parts"
+                },
+                "typeAnnotation": {
+                  "type": "ArrayType",
+                  "elementType": {
+                    "type": "KeywordType",
+                    "name": "string",
+                    "line": 21,
+                    "column": 16
+                  },
+                  "line": 21,
+                  "column": 16
+                },
+                "init": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "greeting",
+                      "line": 21,
+                      "column": 27
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "split"
+                    },
+                    "computed": false,
+                    "line": 21,
+                    "column": 27
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": ", ",
+                      "raw": "\", \"",
+                      "line": 21,
+                      "column": 42
+                    }
+                  ],
+                  "line": 21,
+                  "column": 27
+                }
+              }
+            ],
+            "line": 21,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 22,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 22,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "MemberExpression",
+                  "object": {
+                    "type": "Identifier",
+                    "name": "parts",
+                    "line": 22,
+                    "column": 15
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "length"
+                  },
+                  "computed": false,
+                  "line": 22,
+                  "column": 15
+                }
+              ],
+              "line": 22,
+              "column": 3
+            },
+            "line": 22,
+            "column": 3
+          }
+        ],
+        "line": 1,
+        "column": 23
+      },
+      "line": 1,
+      "column": 1
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "main",
+          "line": 25,
+          "column": 1
+        },
+        "arguments": [],
+        "line": 25,
+        "column": 1
+      },
+      "line": 25,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}

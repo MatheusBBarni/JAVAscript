@@ -10,8 +10,20 @@ export type NodeType =
   | 'BlockStatement'
   | 'ExpressionStatement'
   | 'IfStatement'
+  | 'ForStatement'
+  | 'ForOfStatement'
+  | 'WhileStatement'
   | 'ReturnStatement'
   | 'ThrowStatement'
+  | 'TryStatement'
+  | 'CatchClause'
+  | 'SwitchStatement'
+  | 'SwitchCase'
+  | 'BreakStatement'
+  | 'InterfaceDeclaration'
+  | 'InterfaceBody'
+  | 'PropertySignature'
+  | 'TemplateLiteral'
   | 'ImportDeclaration'
   | 'ImportDefaultSpecifier'
   | 'ImportSpecifier'
@@ -23,12 +35,15 @@ export type NodeType =
   | 'CallExpression'
   | 'MemberExpression'
   | 'NewExpression'
+  | 'ArrayExpression'
   | 'Identifier'
   | 'Literal'
+  | 'UnaryExpression'
   | 'TypeAnnotation'
   | 'TypeReference'
   | 'UnionType'
   | 'KeywordType'
+  | 'ArrayType'
   | 'QualifiedName'
   | 'JavaPackageSource';
 
@@ -50,8 +65,15 @@ export type Statement =
   | BlockStatement
   | ExpressionStatement
   | IfStatement
+  | ForStatement
+  | ForOfStatement
+  | WhileStatement
   | ReturnStatement
   | ThrowStatement
+  | TryStatement
+  | SwitchStatement
+  | BreakStatement
+  | InterfaceDeclaration
   | ImportDeclaration
   | ExportNamedDeclaration;
 
@@ -62,8 +84,11 @@ export type Expression =
   | CallExpression
   | MemberExpression
   | NewExpression
+  | ArrayExpression
   | Identifier
-  | Literal;
+  | Literal
+  | TemplateLiteral
+  | UnaryExpression;
 
 export interface VariableDeclaration extends Node {
   type: 'VariableDeclaration';
@@ -149,6 +174,79 @@ export interface ThrowStatement extends Node {
   argument: Expression;
 }
 
+export interface TryStatement extends Node {
+  type: 'TryStatement';
+  block: BlockStatement;
+  handler: CatchClause | null;
+  finalizer: BlockStatement | null;
+}
+
+export interface CatchClause extends Node {
+  type: 'CatchClause';
+  param: Identifier | null;
+  paramType?: TypeNode;
+  body: BlockStatement;
+}
+
+export interface SwitchStatement extends Node {
+  type: 'SwitchStatement';
+  discriminant: Expression;
+  cases: SwitchCase[];
+}
+
+export interface SwitchCase extends Node {
+  type: 'SwitchCase';
+  test: Expression | null;
+  consequent: Statement[];
+}
+
+export interface BreakStatement extends Node {
+  type: 'BreakStatement';
+}
+
+export interface ForStatement extends Node {
+  type: 'ForStatement';
+  init?: VariableDeclaration | ExpressionStatement;
+  test?: Expression;
+  update?: Expression;
+  body: Statement;
+}
+
+export interface ForOfStatement extends Node {
+  type: 'ForOfStatement';
+  left: VariableDeclaration;
+  right: Expression;
+  body: Statement;
+}
+
+export interface InterfaceDeclaration extends Node {
+  type: 'InterfaceDeclaration';
+  id: Identifier;
+  body: InterfaceBody;
+}
+
+export interface InterfaceBody extends Node {
+  type: 'InterfaceBody';
+  properties: PropertySignature[];
+}
+
+export interface PropertySignature extends Node {
+  type: 'PropertySignature';
+  key: Identifier;
+  typeAnnotation: TypeNode;
+}
+
+export interface TemplateLiteral extends Node {
+  type: 'TemplateLiteral';
+  value: string;
+}
+
+export interface WhileStatement extends Node {
+  type: 'WhileStatement';
+  test: Expression;
+  body: Statement;
+}
+
 export interface ImportDeclaration extends Node {
   type: 'ImportDeclaration';
   specifiers: (ImportDefaultSpecifier | ImportSpecifier)[];
@@ -191,6 +289,13 @@ export interface ArrowFunctionExpression extends Node {
   body: BlockStatement | Expression;
 }
 
+export interface UnaryExpression extends Node {
+  type: 'UnaryExpression';
+  operator: string;
+  argument: Expression;
+  prefix: boolean;
+}
+
 export interface BinaryExpression extends Node {
   type: 'BinaryExpression';
   operator: string;
@@ -217,6 +322,11 @@ export interface NewExpression extends Node {
   arguments: Expression[];
 }
 
+export interface ArrayExpression extends Node {
+  type: 'ArrayExpression';
+  elements: Expression[];
+}
+
 export interface MemberExpression extends Node {
   type: 'MemberExpression';
   object: Expression;
@@ -238,7 +348,12 @@ export interface Literal extends Node {
 
 // Type Node interfaces
 
-export type TypeNode = TypeReference | UnionType | KeywordType;
+export type TypeNode = TypeReference | UnionType | KeywordType | ArrayType;
+
+export interface ArrayType extends Node {
+  type: 'ArrayType';
+  elementType: TypeNode;
+}
 
 export interface TypeReference extends Node {
   type: 'TypeReference';

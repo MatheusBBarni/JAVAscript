@@ -1,0 +1,820 @@
+Source: 14-switch-case.ts
+
+Tokens:
+Token(FUNCTION, "function", line=1, col=1)
+Token(IDENTIFIER, "getDayName", line=1, col=10)
+Token(L_PAREN, "(", line=1, col=20)
+Token(IDENTIFIER, "day", line=1, col=21)
+Token(COLON, ":", line=1, col=24)
+Token(TYPE_NUMBER, "number", line=1, col=26)
+Token(R_PAREN, ")", line=1, col=32)
+Token(COLON, ":", line=1, col=33)
+Token(TYPE_STRING, "string", line=1, col=35)
+Token(L_BRACE, "{", line=1, col=42)
+Token(VAR, "var", line=2, col=3)
+Token(IDENTIFIER, "name", line=2, col=7)
+Token(COLON, ":", line=2, col=11)
+Token(TYPE_STRING, "string", line=2, col=13)
+Token(EQUALS, "=", line=2, col=20)
+Token(STRING, """", line=2, col=22)
+Token(SEMICOLON, ";", line=2, col=24)
+Token(SWITCH, "switch", line=3, col=3)
+Token(L_PAREN, "(", line=3, col=10)
+Token(IDENTIFIER, "day", line=3, col=11)
+Token(R_PAREN, ")", line=3, col=14)
+Token(L_BRACE, "{", line=3, col=16)
+Token(CASE, "case", line=4, col=5)
+Token(NUMBER, "1", line=4, col=10)
+Token(COLON, ":", line=4, col=11)
+Token(IDENTIFIER, "name", line=5, col=7)
+Token(EQUALS, "=", line=5, col=12)
+Token(STRING, "Monday", line=5, col=14)
+Token(SEMICOLON, ";", line=5, col=22)
+Token(BREAK, "break", line=6, col=7)
+Token(SEMICOLON, ";", line=6, col=12)
+Token(CASE, "case", line=7, col=5)
+Token(NUMBER, "2", line=7, col=10)
+Token(COLON, ":", line=7, col=11)
+Token(IDENTIFIER, "name", line=8, col=7)
+Token(EQUALS, "=", line=8, col=12)
+Token(STRING, "Tuesday", line=8, col=14)
+Token(SEMICOLON, ";", line=8, col=23)
+Token(BREAK, "break", line=9, col=7)
+Token(SEMICOLON, ";", line=9, col=12)
+Token(CASE, "case", line=10, col=5)
+Token(NUMBER, "3", line=10, col=10)
+Token(COLON, ":", line=10, col=11)
+Token(IDENTIFIER, "name", line=11, col=7)
+Token(EQUALS, "=", line=11, col=12)
+Token(STRING, "Wednesday", line=11, col=14)
+Token(SEMICOLON, ";", line=11, col=25)
+Token(BREAK, "break", line=12, col=7)
+Token(SEMICOLON, ";", line=12, col=12)
+Token(DEFAULT, "default", line=13, col=5)
+Token(COLON, ":", line=13, col=12)
+Token(IDENTIFIER, "name", line=14, col=7)
+Token(EQUALS, "=", line=14, col=12)
+Token(STRING, "Unknown", line=14, col=14)
+Token(SEMICOLON, ";", line=14, col=23)
+Token(BREAK, "break", line=15, col=7)
+Token(SEMICOLON, ";", line=15, col=12)
+Token(R_BRACE, "}", line=16, col=3)
+Token(RETURN, "return", line=17, col=3)
+Token(IDENTIFIER, "name", line=17, col=10)
+Token(SEMICOLON, ";", line=17, col=14)
+Token(R_BRACE, "}", line=18, col=1)
+Token(FUNCTION, "function", line=20, col=1)
+Token(IDENTIFIER, "processAction", line=20, col=10)
+Token(L_PAREN, "(", line=20, col=23)
+Token(IDENTIFIER, "action", line=20, col=24)
+Token(COLON, ":", line=20, col=30)
+Token(TYPE_STRING, "string", line=20, col=32)
+Token(R_PAREN, ")", line=20, col=38)
+Token(COLON, ":", line=20, col=39)
+Token(TYPE_VOID, "void", line=20, col=41)
+Token(L_BRACE, "{", line=20, col=46)
+Token(SWITCH, "switch", line=21, col=3)
+Token(L_PAREN, "(", line=21, col=10)
+Token(IDENTIFIER, "action", line=21, col=11)
+Token(R_PAREN, ")", line=21, col=17)
+Token(L_BRACE, "{", line=21, col=19)
+Token(CASE, "case", line=22, col=5)
+Token(STRING, "start", line=22, col=10)
+Token(COLON, ":", line=22, col=17)
+Token(CASE, "case", line=23, col=5)
+Token(STRING, "resume", line=23, col=10)
+Token(COLON, ":", line=23, col=18)
+Token(IDENTIFIER, "console", line=24, col=7)
+Token(DOT, ".", line=24, col=14)
+Token(IDENTIFIER, "log", line=24, col=15)
+Token(L_PAREN, "(", line=24, col=18)
+Token(STRING, "Playing", line=24, col=19)
+Token(R_PAREN, ")", line=24, col=28)
+Token(SEMICOLON, ";", line=24, col=29)
+Token(BREAK, "break", line=25, col=7)
+Token(SEMICOLON, ";", line=25, col=12)
+Token(CASE, "case", line=26, col=5)
+Token(STRING, "stop", line=26, col=10)
+Token(COLON, ":", line=26, col=16)
+Token(IDENTIFIER, "console", line=27, col=7)
+Token(DOT, ".", line=27, col=14)
+Token(IDENTIFIER, "log", line=27, col=15)
+Token(L_PAREN, "(", line=27, col=18)
+Token(STRING, "Stopped", line=27, col=19)
+Token(R_PAREN, ")", line=27, col=28)
+Token(SEMICOLON, ";", line=27, col=29)
+Token(BREAK, "break", line=28, col=7)
+Token(SEMICOLON, ";", line=28, col=12)
+Token(DEFAULT, "default", line=29, col=5)
+Token(COLON, ":", line=29, col=12)
+Token(IDENTIFIER, "console", line=30, col=7)
+Token(DOT, ".", line=30, col=14)
+Token(IDENTIFIER, "log", line=30, col=15)
+Token(L_PAREN, "(", line=30, col=18)
+Token(STRING, "Unknown action", line=30, col=19)
+Token(R_PAREN, ")", line=30, col=35)
+Token(SEMICOLON, ";", line=30, col=36)
+Token(R_BRACE, "}", line=31, col=3)
+Token(R_BRACE, "}", line=32, col=1)
+Token(FUNCTION, "function", line=34, col=1)
+Token(IDENTIFIER, "main", line=34, col=10)
+Token(L_PAREN, "(", line=34, col=14)
+Token(R_PAREN, ")", line=34, col=15)
+Token(COLON, ":", line=34, col=16)
+Token(TYPE_VOID, "void", line=34, col=18)
+Token(L_BRACE, "{", line=34, col=23)
+Token(IDENTIFIER, "console", line=35, col=3)
+Token(DOT, ".", line=35, col=10)
+Token(IDENTIFIER, "log", line=35, col=11)
+Token(L_PAREN, "(", line=35, col=14)
+Token(IDENTIFIER, "getDayName", line=35, col=15)
+Token(L_PAREN, "(", line=35, col=25)
+Token(NUMBER, "2", line=35, col=26)
+Token(R_PAREN, ")", line=35, col=27)
+Token(R_PAREN, ")", line=35, col=28)
+Token(SEMICOLON, ";", line=35, col=29)
+Token(IDENTIFIER, "console", line=36, col=3)
+Token(DOT, ".", line=36, col=10)
+Token(IDENTIFIER, "log", line=36, col=11)
+Token(L_PAREN, "(", line=36, col=14)
+Token(IDENTIFIER, "getDayName", line=36, col=15)
+Token(L_PAREN, "(", line=36, col=25)
+Token(NUMBER, "4", line=36, col=26)
+Token(R_PAREN, ")", line=36, col=27)
+Token(R_PAREN, ")", line=36, col=28)
+Token(SEMICOLON, ";", line=36, col=29)
+Token(IDENTIFIER, "processAction", line=38, col=3)
+Token(L_PAREN, "(", line=38, col=16)
+Token(STRING, "resume", line=38, col=17)
+Token(R_PAREN, ")", line=38, col=25)
+Token(SEMICOLON, ";", line=38, col=26)
+Token(IDENTIFIER, "processAction", line=39, col=3)
+Token(L_PAREN, "(", line=39, col=16)
+Token(STRING, "pause", line=39, col=17)
+Token(R_PAREN, ")", line=39, col=24)
+Token(SEMICOLON, ";", line=39, col=25)
+Token(R_BRACE, "}", line=40, col=1)
+Token(IDENTIFIER, "main", line=42, col=1)
+Token(L_PAREN, "(", line=42, col=5)
+Token(R_PAREN, ")", line=42, col=6)
+Token(SEMICOLON, ";", line=42, col=7)
+Token(EOF, "", line=43, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "getDayName"
+      },
+      "params": [
+        {
+          "type": "Identifier",
+          "name": "day",
+          "typeAnnotation": {
+            "type": "KeywordType",
+            "name": "number",
+            "line": 1,
+            "column": 26
+          }
+        }
+      ],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "string",
+        "line": 1,
+        "column": 35
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "kind": "var",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "name"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "string",
+                  "line": 2,
+                  "column": 13
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": "\"\"",
+                  "raw": "\"\"\"\"",
+                  "line": 2,
+                  "column": 22
+                }
+              }
+            ],
+            "line": 2,
+            "column": 3
+          },
+          {
+            "type": "SwitchStatement",
+            "discriminant": {
+              "type": "Identifier",
+              "name": "day",
+              "line": 3,
+              "column": 11
+            },
+            "cases": [
+              {
+                "type": "SwitchCase",
+                "test": {
+                  "type": "Literal",
+                  "value": 1,
+                  "raw": "1",
+                  "line": 4,
+                  "column": 10
+                },
+                "consequent": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "AssignmentExpression",
+                      "operator": "=",
+                      "left": {
+                        "type": "Identifier",
+                        "name": "name",
+                        "line": 5,
+                        "column": 7
+                      },
+                      "right": {
+                        "type": "Literal",
+                        "value": "Monday",
+                        "raw": "\"Monday\"",
+                        "line": 5,
+                        "column": 14
+                      },
+                      "line": 5,
+                      "column": 7
+                    },
+                    "line": 5,
+                    "column": 7
+                  },
+                  {
+                    "type": "BreakStatement",
+                    "line": 6,
+                    "column": 7
+                  }
+                ],
+                "line": 3,
+                "column": 3
+              },
+              {
+                "type": "SwitchCase",
+                "test": {
+                  "type": "Literal",
+                  "value": 2,
+                  "raw": "2",
+                  "line": 7,
+                  "column": 10
+                },
+                "consequent": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "AssignmentExpression",
+                      "operator": "=",
+                      "left": {
+                        "type": "Identifier",
+                        "name": "name",
+                        "line": 8,
+                        "column": 7
+                      },
+                      "right": {
+                        "type": "Literal",
+                        "value": "Tuesday",
+                        "raw": "\"Tuesday\"",
+                        "line": 8,
+                        "column": 14
+                      },
+                      "line": 8,
+                      "column": 7
+                    },
+                    "line": 8,
+                    "column": 7
+                  },
+                  {
+                    "type": "BreakStatement",
+                    "line": 9,
+                    "column": 7
+                  }
+                ],
+                "line": 3,
+                "column": 3
+              },
+              {
+                "type": "SwitchCase",
+                "test": {
+                  "type": "Literal",
+                  "value": 3,
+                  "raw": "3",
+                  "line": 10,
+                  "column": 10
+                },
+                "consequent": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "AssignmentExpression",
+                      "operator": "=",
+                      "left": {
+                        "type": "Identifier",
+                        "name": "name",
+                        "line": 11,
+                        "column": 7
+                      },
+                      "right": {
+                        "type": "Literal",
+                        "value": "Wednesday",
+                        "raw": "\"Wednesday\"",
+                        "line": 11,
+                        "column": 14
+                      },
+                      "line": 11,
+                      "column": 7
+                    },
+                    "line": 11,
+                    "column": 7
+                  },
+                  {
+                    "type": "BreakStatement",
+                    "line": 12,
+                    "column": 7
+                  }
+                ],
+                "line": 3,
+                "column": 3
+              },
+              {
+                "type": "SwitchCase",
+                "test": null,
+                "consequent": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "AssignmentExpression",
+                      "operator": "=",
+                      "left": {
+                        "type": "Identifier",
+                        "name": "name",
+                        "line": 14,
+                        "column": 7
+                      },
+                      "right": {
+                        "type": "Literal",
+                        "value": "Unknown",
+                        "raw": "\"Unknown\"",
+                        "line": 14,
+                        "column": 14
+                      },
+                      "line": 14,
+                      "column": 7
+                    },
+                    "line": 14,
+                    "column": 7
+                  },
+                  {
+                    "type": "BreakStatement",
+                    "line": 15,
+                    "column": 7
+                  }
+                ],
+                "line": 3,
+                "column": 3
+              }
+            ],
+            "line": 3,
+            "column": 3
+          },
+          {
+            "type": "ReturnStatement",
+            "argument": {
+              "type": "Identifier",
+              "name": "name",
+              "line": 17,
+              "column": 10
+            },
+            "line": 17,
+            "column": 3
+          }
+        ],
+        "line": 1,
+        "column": 42
+      },
+      "line": 1,
+      "column": 1
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "processAction"
+      },
+      "params": [
+        {
+          "type": "Identifier",
+          "name": "action",
+          "typeAnnotation": {
+            "type": "KeywordType",
+            "name": "string",
+            "line": 20,
+            "column": 32
+          }
+        }
+      ],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 20,
+        "column": 41
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "SwitchStatement",
+            "discriminant": {
+              "type": "Identifier",
+              "name": "action",
+              "line": 21,
+              "column": 11
+            },
+            "cases": [
+              {
+                "type": "SwitchCase",
+                "test": {
+                  "type": "Literal",
+                  "value": "start",
+                  "raw": "\"start\"",
+                  "line": 22,
+                  "column": 10
+                },
+                "consequent": [],
+                "line": 21,
+                "column": 3
+              },
+              {
+                "type": "SwitchCase",
+                "test": {
+                  "type": "Literal",
+                  "value": "resume",
+                  "raw": "\"resume\"",
+                  "line": 23,
+                  "column": 10
+                },
+                "consequent": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "object": {
+                          "type": "Identifier",
+                          "name": "console",
+                          "line": 24,
+                          "column": 7
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "log"
+                        },
+                        "computed": false,
+                        "line": 24,
+                        "column": 7
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "value": "Playing",
+                          "raw": "\"Playing\"",
+                          "line": 24,
+                          "column": 19
+                        }
+                      ],
+                      "line": 24,
+                      "column": 7
+                    },
+                    "line": 24,
+                    "column": 7
+                  },
+                  {
+                    "type": "BreakStatement",
+                    "line": 25,
+                    "column": 7
+                  }
+                ],
+                "line": 21,
+                "column": 3
+              },
+              {
+                "type": "SwitchCase",
+                "test": {
+                  "type": "Literal",
+                  "value": "stop",
+                  "raw": "\"stop\"",
+                  "line": 26,
+                  "column": 10
+                },
+                "consequent": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "object": {
+                          "type": "Identifier",
+                          "name": "console",
+                          "line": 27,
+                          "column": 7
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "log"
+                        },
+                        "computed": false,
+                        "line": 27,
+                        "column": 7
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "value": "Stopped",
+                          "raw": "\"Stopped\"",
+                          "line": 27,
+                          "column": 19
+                        }
+                      ],
+                      "line": 27,
+                      "column": 7
+                    },
+                    "line": 27,
+                    "column": 7
+                  },
+                  {
+                    "type": "BreakStatement",
+                    "line": 28,
+                    "column": 7
+                  }
+                ],
+                "line": 21,
+                "column": 3
+              },
+              {
+                "type": "SwitchCase",
+                "test": null,
+                "consequent": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "object": {
+                          "type": "Identifier",
+                          "name": "console",
+                          "line": 30,
+                          "column": 7
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "log"
+                        },
+                        "computed": false,
+                        "line": 30,
+                        "column": 7
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "value": "Unknown action",
+                          "raw": "\"Unknown action\"",
+                          "line": 30,
+                          "column": 19
+                        }
+                      ],
+                      "line": 30,
+                      "column": 7
+                    },
+                    "line": 30,
+                    "column": 7
+                  }
+                ],
+                "line": 21,
+                "column": 3
+              }
+            ],
+            "line": 21,
+            "column": 3
+          }
+        ],
+        "line": 20,
+        "column": 46
+      },
+      "line": 20,
+      "column": 1
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "main"
+      },
+      "params": [],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 34,
+        "column": 18
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 35,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 35,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "getDayName",
+                    "line": 35,
+                    "column": 15
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": 2,
+                      "raw": "2",
+                      "line": 35,
+                      "column": 26
+                    }
+                  ],
+                  "line": 35,
+                  "column": 15
+                }
+              ],
+              "line": 35,
+              "column": 3
+            },
+            "line": 35,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 36,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 36,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "getDayName",
+                    "line": 36,
+                    "column": 15
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": 4,
+                      "raw": "4",
+                      "line": 36,
+                      "column": 26
+                    }
+                  ],
+                  "line": 36,
+                  "column": 15
+                }
+              ],
+              "line": 36,
+              "column": 3
+            },
+            "line": 36,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "processAction",
+                "line": 38,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "resume",
+                  "raw": "\"resume\"",
+                  "line": 38,
+                  "column": 17
+                }
+              ],
+              "line": 38,
+              "column": 3
+            },
+            "line": 38,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "processAction",
+                "line": 39,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "pause",
+                  "raw": "\"pause\"",
+                  "line": 39,
+                  "column": 17
+                }
+              ],
+              "line": 39,
+              "column": 3
+            },
+            "line": 39,
+            "column": 3
+          }
+        ],
+        "line": 34,
+        "column": 23
+      },
+      "line": 34,
+      "column": 1
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "main",
+          "line": 42,
+          "column": 1
+        },
+        "arguments": [],
+        "line": 42,
+        "column": 1
+      },
+      "line": 42,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}

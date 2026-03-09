@@ -39,6 +39,13 @@ bun run java:test    # Compile & run all Java outputs
 | Imports           | `import http from 'http'`                       | Mapped to Java wrappers                             |
 | Java Imports      | `import X from 'com.pkg.Class'`                 | `import com.pkg.Class;`                             |
 | Exports           | `export function`, `export class`               | Public class members                                |
+| Loops             | `for (let i = 0; i < 10; i+=1)`, `while (x)`    | `for (double i = 0; i < 10; i+=1)`, `while (x)`     |
+| Arrays            | `const arr: number[] = [1, 2]`                  | `double[] arr = new double[]{1, 2};`                |
+| For...of          | `for (const x of arr)`                          | `for (final var x : arr)`                           |
+| Try/Catch         | `try { throw new Error() } catch (e) {}`        | `try { throw new RuntimeException() } catch(e) {}`  |
+| Switch/Case       | `switch(x) { case 1: break; }`                  | `switch((int)x) { case 1: break; }`                 |
+| Interfaces        | `interface User { name: string; }`              | `public static class User { public String name; }`  |
+| Template Literals | `` `Hello ${name}` ``                           | `"Hello " + name + ""`                              |
 
 ### Module Mapping
 
@@ -66,17 +73,25 @@ TypeScript `fs` and `http` modules are mapped to Java wrapper libraries in `.jav
 
 ## Examples
 
-| #   | File                    | Tests                                   | Status |
-| --- | ----------------------- | --------------------------------------- | ------ |
-| 01  | `01-main-function.ts`   | Variables, if/else, console.log         | ✅     |
-| 02  | `02-sum.ts`             | Functions, return values                | ✅     |
-| 03  | `03-imports.ts`         | HTTP GET, file write, callbacks         | ✅     |
-| 04  | `04-exports.ts`         | Classes, exports                        | ✅     |
-| 05  | `05-java-imports.ts`    | Java package imports (`java.lang.Math`) | ✅     |
-| 06  | `06-json-and-files.ts`  | JSON.parse, JSON.stringify, file I/O    | ✅     |
-| 07  | `07-http-server.ts`     | HTTP server, createServer, listen       | ✅     |
-| 08  | `08-read-write-file.ts` | readFileSync, writeFileSync             | ✅     |
-| 09  | `09-http-server-api.ts` | REST API with routing & query params    | ✅     |
+| #   | File                      | Tests                                    | Status |
+| --- | ------------------------- | ---------------------------------------- | ------ |
+| 01  | `01-main-function.ts`     | Variables, if/else, console.log          | ✅     |
+| 02  | `02-sum.ts`               | Functions, return values                 | ✅     |
+| 03  | `03-imports.ts`           | HTTP GET, file write, callbacks          | ✅     |
+| 04  | `04-exports.ts`           | Classes, exports                         | ✅     |
+| 05  | `05-java-imports.ts`      | Java package imports (`java.lang.Math`)  | ✅     |
+| 06  | `06-json-and-files.ts`    | JSON.parse, JSON.stringify, file I/O     | ✅     |
+| 07  | `07-http-server.ts`       | HTTP server, createServer, listen        | ✅     |
+| 08  | `08-read-write-file.ts`   | readFileSync, writeFileSync              | ✅     |
+| 09  | `09-http-server-api.ts`   | REST API with routing & query params     | ✅     |
+| 10  | `10-loops.ts`             | `for` and `while` loops                  | ✅     |
+| 11  | `11-unary-logical.ts`     | Unary (`-`, `!`), logical (`&&`, `\|\|`) | ✅     |
+| 12  | `12-arrays.ts`            | Array literals and `for...of` loops      | ✅     |
+| 13  | `13-try-catch.ts`         | `try`/`catch`/`finally` blocks           | ✅     |
+| 14  | `14-switch-case.ts`       | `switch`/`case` and `break`              | ✅     |
+| 15  | `15-string-methods.ts`    | String methods (`length`, `toUpperCase`) | ✅     |
+| 16  | `16-interfaces.ts`        | Interfaces and Java typed classes        | ✅     |
+| 17  | `17-template-literals.ts` | Template literals & string interpolation | ✅     |
 
 ## Project Structure
 

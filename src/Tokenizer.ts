@@ -29,6 +29,14 @@ export class Tokenizer {
     'null': TokenType.NULL,
     'true': TokenType.TRUE,
     'false': TokenType.FALSE,
+    'try': TokenType.TRY,
+    'catch': TokenType.CATCH,
+    'finally': TokenType.FINALLY,
+    'switch': TokenType.SWITCH,
+    'case': TokenType.CASE,
+    'default': TokenType.DEFAULT,
+    'break': TokenType.BREAK,
+    'of': TokenType.OF,
 
     // Types
     'number': TokenType.TYPE_NUMBER,
@@ -133,10 +141,18 @@ export class Tokenizer {
         }
         break;
       case '|':
-        this.addToken(TokenType.PIPE);
+        if (this.match('|')) {
+          this.addToken(TokenType.PIPE_PIPE);
+        } else {
+          this.addToken(TokenType.PIPE);
+        }
         break;
       case '&':
-        this.addToken(TokenType.AMPERSAND);
+        if (this.match('&')) {
+          this.addToken(TokenType.AMP_AMP);
+        } else {
+          this.addToken(TokenType.AMPERSAND);
+        }
         break;
       case '?':
         this.addToken(TokenType.QUESTION);
@@ -156,6 +172,10 @@ export class Tokenizer {
       case '"':
       case "'":
         this.string(c);
+        break;
+
+      case '`':
+        this.templateString();
         break;
 
       default:
@@ -213,6 +233,25 @@ export class Tokenizer {
     // Trim the surrounding quotes
     const value = this.source.substring(this.start + 1, this.current - 1);
     this.addToken(TokenType.STRING, value);
+  }
+
+  private templateString(): void {
+    while (this.peek() !== '`' && !this.isAtEnd()) {
+      if (this.peek() === '\n') {
+        this.line++;
+        this.currentLineStart = this.current;
+      }
+      this.advance();
+    }
+
+    if (this.isAtEnd()) {
+      throw new Error(`Unterminated template string at line ${this.line}`);
+    }
+
+    this.advance(); // The closing backtick
+
+    const value = this.source.substring(this.start + 1, this.current - 1);
+    this.addToken(TokenType.TEMPLATE, value);
   }
 
   private match(expected: string): boolean {

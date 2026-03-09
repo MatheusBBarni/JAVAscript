@@ -1,0 +1,695 @@
+Source: 11-unary-logical.ts
+
+Tokens:
+Token(FUNCTION, "function", line=1, col=1)
+Token(IDENTIFIER, "main", line=1, col=10)
+Token(L_PAREN, "(", line=1, col=14)
+Token(R_PAREN, ")", line=1, col=15)
+Token(COLON, ":", line=1, col=16)
+Token(TYPE_VOID, "void", line=1, col=18)
+Token(L_BRACE, "{", line=1, col=23)
+Token(CONST, "const", line=2, col=3)
+Token(IDENTIFIER, "x", line=2, col=9)
+Token(COLON, ":", line=2, col=10)
+Token(TYPE_NUMBER, "number", line=2, col=12)
+Token(EQUALS, "=", line=2, col=19)
+Token(NUMBER, "10", line=2, col=21)
+Token(SEMICOLON, ";", line=2, col=23)
+Token(CONST, "const", line=3, col=3)
+Token(IDENTIFIER, "neg", line=3, col=9)
+Token(COLON, ":", line=3, col=12)
+Token(TYPE_NUMBER, "number", line=3, col=14)
+Token(EQUALS, "=", line=3, col=21)
+Token(MINUS, "-", line=3, col=23)
+Token(IDENTIFIER, "x", line=3, col=24)
+Token(SEMICOLON, ";", line=3, col=25)
+Token(IDENTIFIER, "console", line=4, col=3)
+Token(DOT, ".", line=4, col=10)
+Token(IDENTIFIER, "log", line=4, col=11)
+Token(L_PAREN, "(", line=4, col=14)
+Token(STRING, "neg:", line=4, col=15)
+Token(R_PAREN, ")", line=4, col=21)
+Token(SEMICOLON, ";", line=4, col=22)
+Token(IDENTIFIER, "console", line=5, col=3)
+Token(DOT, ".", line=5, col=10)
+Token(IDENTIFIER, "log", line=5, col=11)
+Token(L_PAREN, "(", line=5, col=14)
+Token(IDENTIFIER, "neg", line=5, col=15)
+Token(R_PAREN, ")", line=5, col=18)
+Token(SEMICOLON, ";", line=5, col=19)
+Token(CONST, "const", line=7, col=3)
+Token(IDENTIFIER, "y", line=7, col=9)
+Token(COLON, ":", line=7, col=10)
+Token(TYPE_BOOLEAN, "boolean", line=7, col=12)
+Token(EQUALS, "=", line=7, col=20)
+Token(TRUE, "true", line=7, col=22)
+Token(SEMICOLON, ";", line=7, col=26)
+Token(CONST, "const", line=8, col=3)
+Token(IDENTIFIER, "z", line=8, col=9)
+Token(COLON, ":", line=8, col=10)
+Token(TYPE_BOOLEAN, "boolean", line=8, col=12)
+Token(EQUALS, "=", line=8, col=20)
+Token(FALSE, "false", line=8, col=22)
+Token(SEMICOLON, ";", line=8, col=27)
+Token(IDENTIFIER, "console", line=10, col=3)
+Token(DOT, ".", line=10, col=10)
+Token(IDENTIFIER, "log", line=10, col=11)
+Token(L_PAREN, "(", line=10, col=14)
+Token(STRING, "!y:", line=10, col=15)
+Token(R_PAREN, ")", line=10, col=20)
+Token(SEMICOLON, ";", line=10, col=21)
+Token(IDENTIFIER, "console", line=11, col=3)
+Token(DOT, ".", line=11, col=10)
+Token(IDENTIFIER, "log", line=11, col=11)
+Token(L_PAREN, "(", line=11, col=14)
+Token(BANG, "!", line=11, col=15)
+Token(IDENTIFIER, "y", line=11, col=16)
+Token(R_PAREN, ")", line=11, col=17)
+Token(SEMICOLON, ";", line=11, col=18)
+Token(IF, "if", line=13, col=3)
+Token(L_PAREN, "(", line=13, col=6)
+Token(IDENTIFIER, "y", line=13, col=7)
+Token(AMP_AMP, "&&", line=13, col=9)
+Token(BANG, "!", line=13, col=12)
+Token(IDENTIFIER, "z", line=13, col=13)
+Token(R_PAREN, ")", line=13, col=14)
+Token(L_BRACE, "{", line=13, col=16)
+Token(IDENTIFIER, "console", line=14, col=5)
+Token(DOT, ".", line=14, col=12)
+Token(IDENTIFIER, "log", line=14, col=13)
+Token(L_PAREN, "(", line=14, col=16)
+Token(STRING, "Both true", line=14, col=17)
+Token(R_PAREN, ")", line=14, col=28)
+Token(SEMICOLON, ";", line=14, col=29)
+Token(R_BRACE, "}", line=15, col=3)
+Token(IF, "if", line=17, col=3)
+Token(L_PAREN, "(", line=17, col=6)
+Token(IDENTIFIER, "y", line=17, col=7)
+Token(PIPE_PIPE, "||", line=17, col=9)
+Token(IDENTIFIER, "z", line=17, col=12)
+Token(R_PAREN, ")", line=17, col=13)
+Token(L_BRACE, "{", line=17, col=15)
+Token(IDENTIFIER, "console", line=18, col=5)
+Token(DOT, ".", line=18, col=12)
+Token(IDENTIFIER, "log", line=18, col=13)
+Token(L_PAREN, "(", line=18, col=16)
+Token(STRING, "At least one is true", line=18, col=17)
+Token(R_PAREN, ")", line=18, col=39)
+Token(SEMICOLON, ";", line=18, col=40)
+Token(R_BRACE, "}", line=19, col=3)
+Token(IF, "if", line=21, col=3)
+Token(L_PAREN, "(", line=21, col=6)
+Token(BANG, "!", line=21, col=7)
+Token(IDENTIFIER, "y", line=21, col=8)
+Token(PIPE_PIPE, "||", line=21, col=10)
+Token(IDENTIFIER, "z", line=21, col=13)
+Token(R_PAREN, ")", line=21, col=14)
+Token(L_BRACE, "{", line=21, col=16)
+Token(IDENTIFIER, "console", line=22, col=5)
+Token(DOT, ".", line=22, col=12)
+Token(IDENTIFIER, "log", line=22, col=13)
+Token(L_PAREN, "(", line=22, col=16)
+Token(STRING, "Never happens", line=22, col=17)
+Token(R_PAREN, ")", line=22, col=32)
+Token(SEMICOLON, ";", line=22, col=33)
+Token(R_BRACE, "}", line=23, col=3)
+Token(ELSE, "else", line=23, col=5)
+Token(L_BRACE, "{", line=23, col=10)
+Token(IDENTIFIER, "console", line=24, col=5)
+Token(DOT, ".", line=24, col=12)
+Token(IDENTIFIER, "log", line=24, col=13)
+Token(L_PAREN, "(", line=24, col=16)
+Token(STRING, "Expected else", line=24, col=17)
+Token(R_PAREN, ")", line=24, col=32)
+Token(SEMICOLON, ";", line=24, col=33)
+Token(R_BRACE, "}", line=25, col=3)
+Token(R_BRACE, "}", line=26, col=1)
+Token(IDENTIFIER, "main", line=28, col=1)
+Token(L_PAREN, "(", line=28, col=5)
+Token(R_PAREN, ")", line=28, col=6)
+Token(SEMICOLON, ";", line=28, col=7)
+Token(EOF, "", line=29, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "main"
+      },
+      "params": [],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 1,
+        "column": 18
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "x"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "number",
+                  "line": 2,
+                  "column": 12
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": 10,
+                  "raw": "10",
+                  "line": 2,
+                  "column": 21
+                }
+              }
+            ],
+            "line": 2,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "neg"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "number",
+                  "line": 3,
+                  "column": 14
+                },
+                "init": {
+                  "type": "UnaryExpression",
+                  "operator": "-",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "line": 3,
+                    "column": 24
+                  },
+                  "prefix": true,
+                  "line": 3,
+                  "column": 24
+                }
+              }
+            ],
+            "line": 3,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 4,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 4,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "neg:",
+                  "raw": "\"neg:\"",
+                  "line": 4,
+                  "column": 15
+                }
+              ],
+              "line": 4,
+              "column": 3
+            },
+            "line": 4,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 5,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 5,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "neg",
+                  "line": 5,
+                  "column": 15
+                }
+              ],
+              "line": 5,
+              "column": 3
+            },
+            "line": 5,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "y"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "boolean",
+                  "line": 7,
+                  "column": 12
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": true,
+                  "raw": "true",
+                  "line": 7,
+                  "column": 22
+                }
+              }
+            ],
+            "line": 7,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "z"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "boolean",
+                  "line": 8,
+                  "column": 12
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": false,
+                  "raw": "false",
+                  "line": 8,
+                  "column": 22
+                }
+              }
+            ],
+            "line": 8,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 10,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 10,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "!y:",
+                  "raw": "\"!y:\"",
+                  "line": 10,
+                  "column": 15
+                }
+              ],
+              "line": 10,
+              "column": 3
+            },
+            "line": 10,
+            "column": 3
+          },
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 11,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 11,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "UnaryExpression",
+                  "operator": "!",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "y",
+                    "line": 11,
+                    "column": 16
+                  },
+                  "prefix": true,
+                  "line": 11,
+                  "column": 16
+                }
+              ],
+              "line": 11,
+              "column": 3
+            },
+            "line": 11,
+            "column": 3
+          },
+          {
+            "type": "IfStatement",
+            "test": {
+              "type": "BinaryExpression",
+              "operator": "&&",
+              "left": {
+                "type": "Identifier",
+                "name": "y",
+                "line": 13,
+                "column": 7
+              },
+              "right": {
+                "type": "UnaryExpression",
+                "operator": "!",
+                "argument": {
+                  "type": "Identifier",
+                  "name": "z",
+                  "line": 13,
+                  "column": 13
+                },
+                "prefix": true,
+                "line": 13,
+                "column": 13
+              },
+              "line": 13,
+              "column": 7
+            },
+            "consequent": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 14,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 14,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "Both true",
+                        "raw": "\"Both true\"",
+                        "line": 14,
+                        "column": 17
+                      }
+                    ],
+                    "line": 14,
+                    "column": 5
+                  },
+                  "line": 14,
+                  "column": 5
+                }
+              ],
+              "line": 13,
+              "column": 16
+            },
+            "line": 13,
+            "column": 3
+          },
+          {
+            "type": "IfStatement",
+            "test": {
+              "type": "BinaryExpression",
+              "operator": "||",
+              "left": {
+                "type": "Identifier",
+                "name": "y",
+                "line": 17,
+                "column": 7
+              },
+              "right": {
+                "type": "Identifier",
+                "name": "z",
+                "line": 17,
+                "column": 12
+              },
+              "line": 17,
+              "column": 7
+            },
+            "consequent": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 18,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 18,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "At least one is true",
+                        "raw": "\"At least one is true\"",
+                        "line": 18,
+                        "column": 17
+                      }
+                    ],
+                    "line": 18,
+                    "column": 5
+                  },
+                  "line": 18,
+                  "column": 5
+                }
+              ],
+              "line": 17,
+              "column": 15
+            },
+            "line": 17,
+            "column": 3
+          },
+          {
+            "type": "IfStatement",
+            "test": {
+              "type": "BinaryExpression",
+              "operator": "||",
+              "left": {
+                "type": "UnaryExpression",
+                "operator": "!",
+                "argument": {
+                  "type": "Identifier",
+                  "name": "y",
+                  "line": 21,
+                  "column": 8
+                },
+                "prefix": true,
+                "line": 21,
+                "column": 8
+              },
+              "right": {
+                "type": "Identifier",
+                "name": "z",
+                "line": 21,
+                "column": 13
+              },
+              "line": 21,
+              "column": 8
+            },
+            "consequent": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 22,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 22,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "Never happens",
+                        "raw": "\"Never happens\"",
+                        "line": 22,
+                        "column": 17
+                      }
+                    ],
+                    "line": 22,
+                    "column": 5
+                  },
+                  "line": 22,
+                  "column": 5
+                }
+              ],
+              "line": 21,
+              "column": 16
+            },
+            "alternate": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 24,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 24,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "Expected else",
+                        "raw": "\"Expected else\"",
+                        "line": 24,
+                        "column": 17
+                      }
+                    ],
+                    "line": 24,
+                    "column": 5
+                  },
+                  "line": 24,
+                  "column": 5
+                }
+              ],
+              "line": 23,
+              "column": 10
+            },
+            "line": 21,
+            "column": 3
+          }
+        ],
+        "line": 1,
+        "column": 23
+      },
+      "line": 1,
+      "column": 1
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "main",
+          "line": 28,
+          "column": 1
+        },
+        "arguments": [],
+        "line": 28,
+        "column": 1
+      },
+      "line": 28,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}

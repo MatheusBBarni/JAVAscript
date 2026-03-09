@@ -27,6 +27,7 @@ export class CodeGenerator {
 
     // Reset aliases for each generation
     this.importAliases = new Map();
+    this.variableTypes.clear();
 
     // Collect imports and top-level definitions
     const imports: string[] = [];
@@ -84,12 +85,15 @@ export class CodeGenerator {
 
       // Separate top-level functions from executable statements to place them as static methods
       const functions: AST.FunctionDeclaration[] = [];
+      const nestedClasses: AST.InterfaceDeclaration[] = [];
       const executableStatements: AST.Statement[] = [];
 
       for (const stmt of topLevelStatements) {
         if (stmt.type === 'FunctionDeclaration') {
           functions.push(stmt);
           if (stmt.id) this.declaredFunctions.add(stmt.id.name);
+        } else if (stmt.type === 'InterfaceDeclaration') {
+          nestedClasses.push(stmt as AST.InterfaceDeclaration);
         } else if (stmt.type === 'ExportNamedDeclaration' && stmt.declaration?.type === 'FunctionDeclaration') {
           functions.push(stmt.declaration as AST.FunctionDeclaration);
         } else if (stmt.type === 'ExportNamedDeclaration' && stmt.declaration?.type === 'VariableDeclaration') {
@@ -101,6 +105,10 @@ export class CodeGenerator {
         } else {
           executableStatements.push(stmt);
         }
+      }
+
+      for (const nc of nestedClasses) {
+        output += this.visitInterfaceDeclaration(nc) + '\n';
       }
 
       for (const func of functions) {
@@ -133,8 +141,15 @@ export class CodeGenerator {
       case 'BlockStatement': return this.visitBlockStatement(stmt);
       case 'ExpressionStatement': return this.visitExpressionStatement(stmt);
       case 'IfStatement': return this.visitIfStatement(stmt);
+      case 'ForStatement': return this.visitForStatement(stmt);
+      case 'ForOfStatement': return this.visitForOfStatement(stmt);
+      case 'WhileStatement': return this.visitWhileStatement(stmt);
       case 'ReturnStatement': return this.visitReturnStatement(stmt);
       case 'ThrowStatement': return this.visitThrowStatement(stmt);
+      case 'TryStatement': return this.visitTryStatement(stmt);
+      case 'SwitchStatement': return this.visitSwitchStatement(stmt);
+      case 'BreakStatement': return 'break;';
+      case 'InterfaceDeclaration': return this.visitInterfaceDeclaration(stmt as AST.InterfaceDeclaration);
       case 'ExportNamedDeclaration': return stmt.declaration ? this.visitStatement(stmt.declaration) : '';
       default: return `// Unhandled statement: ${stmt.type}`;
     }
@@ -146,6 +161,8 @@ export class CodeGenerator {
   private jsonObjectVars: Set<string> = new Set();
   // Track declared function names (for method reference conversion)
   private declaredFunctions: Set<string> = new Set();
+  // Map variable names to their Java type for intelligent method routing
+  private variableTypes: Map<string, string> = new Map();
 
   private visitVariableDeclaration(decl: AST.VariableDeclaration): string {
     return decl.declarations.map(d => {
@@ -173,6 +190,7 @@ export class CodeGenerator {
         return `var ${d.id.name}${init};`;
       }
 
+      this.variableTypes.set(d.id.name, typeStr);
       const init = d.init ? ` = ${this.visitExpression(d.init)}` : '';
       return `${typeStr} ${d.id.name}${init};`;
     }).join('\n' + this.indent());
@@ -190,9 +208,11 @@ export class CodeGenerator {
       if (isHttpHandler) {
         // Map to Http.ServerRequest / Http.ServerResponse
         const httpType = i === 0 ? 'Http.ServerRequest' : 'Http.ServerResponse';
+        this.variableTypes.set(p.name, httpType);
         return `${httpType} ${p.name}`;
       }
       const pType = p.typeAnnotation ? this.mapType(p.typeAnnotation) : 'Object';
+      this.variableTypes.set(p.name, pType);
       return `${pType} ${p.name}`;
     }).join(', ');
 
@@ -269,6 +289,68 @@ export class CodeGenerator {
     return str;
   }
 
+  private visitInterfaceDeclaration(decl: AST.InterfaceDeclaration): string {
+    let str = `public static class ${decl.id.name} {\n`;
+    this.indentLevel++;
+    for (const prop of decl.body.properties) {
+      const javaType = this.mapType(prop.typeAnnotation);
+      str += this.indent() + `public ${javaType} ${prop.key.name};\n`;
+    }
+    this.indentLevel--;
+    str += this.indent() + `}\n`;
+    return str;
+  }
+
+  private visitForOfStatement(stmt: AST.ForOfStatement): string {
+    // @ts-ignore
+    const varName = stmt.left.declarations[0].id.name;
+    const typeModifier = stmt.left.kind === 'const' ? 'final var' : 'var';
+    let str = `for (${typeModifier} ${varName} : ${this.visitExpression(stmt.right)}) {\n`;
+    this.indentLevel++;
+    str += this.indent() + this.visitStatement(stmt.body);
+    this.indentLevel--;
+    str += '\n' + this.indent() + '}';
+    return str;
+  }
+
+  private visitForStatement(stmt: AST.ForStatement): string {
+    let initStr = '';
+    if (stmt.init) {
+      // visitStatement will return something like "double i = 0;"
+      // We strip the trailing semicolon because the for (...) syntax requires it without the trailing semicolon
+      // (Actually, Java `for` loop *has* the semicolon, but if we format it like `for (init; test; update)`, 
+      // we need to inject the semicolons ourselves, so we strip from init.
+      initStr = this.visitStatement(stmt.init).trim().replace(/;$/, '');
+    }
+    const testStr = stmt.test ? this.visitExpression(stmt.test) : '';
+    const updateStr = stmt.update ? this.visitExpression(stmt.update) : '';
+
+    let str = `for (${initStr}; ${testStr}; ${updateStr}) `;
+    if (stmt.body.type === 'BlockStatement') {
+      str += this.visitBlockStatement(stmt.body);
+    } else {
+      str += '\\n';
+      this.indentLevel++;
+      str += this.indent() + this.visitStatement(stmt.body);
+      this.indentLevel--;
+    }
+    return str;
+  }
+
+  private visitWhileStatement(stmt: AST.WhileStatement): string {
+    const testStr = this.visitExpression(stmt.test);
+    let str = `while (${testStr}) `;
+    if (stmt.body.type === 'BlockStatement') {
+      str += this.visitBlockStatement(stmt.body);
+    } else {
+      str += '\\n';
+      this.indentLevel++;
+      str += this.indent() + this.visitStatement(stmt.body);
+      this.indentLevel--;
+    }
+    return str;
+  }
+
   private visitReturnStatement(retStmt: AST.ReturnStatement): string {
     return `return${retStmt.argument ? ' ' + this.visitExpression(retStmt.argument) : ''};`;
   }
@@ -277,9 +359,70 @@ export class CodeGenerator {
     return `throw ${this.visitExpression(throwStmt.argument)};`;
   }
 
+  private visitTryStatement(stmt: AST.TryStatement): string {
+    let str = 'try ';
+    str += this.visitBlockStatement(stmt.block);
+    if (stmt.handler) {
+      str += ' catch (';
+      if (stmt.handler.param) {
+        const typeStr = stmt.handler.paramType ? this.mapType(stmt.handler.paramType) : 'Exception';
+        // JS Error -> Java Exception or RuntimeException
+        const mappedType = typeStr === 'any' || typeStr === 'Object' ? 'Exception' : (typeStr === 'Error' ? 'Exception' : typeStr);
+        str += `${mappedType} ${stmt.handler.param.name}`;
+      } else {
+        str += 'Exception e';
+      }
+      str += ') ';
+      str += this.visitBlockStatement(stmt.handler.body);
+    }
+    if (stmt.finalizer) {
+      str += ' finally ';
+      str += this.visitBlockStatement(stmt.finalizer);
+    }
+    return str;
+  }
+
+  private visitSwitchStatement(stmt: AST.SwitchStatement): string {
+    let discrimStr = this.visitExpression(stmt.discriminant);
+    if (stmt.discriminant.type === 'Identifier') {
+      const type = this.variableTypes.get(stmt.discriminant.name);
+      if (type === 'double') discrimStr = `(int) (${discrimStr})`;
+    } else if (stmt.discriminant.type === 'Literal' && typeof stmt.discriminant.value === 'number') {
+      discrimStr = `(int) (${discrimStr})`;
+    }
+
+    let str = `switch (${discrimStr}) {\n`;
+    this.indentLevel++;
+    for (const c of stmt.cases) {
+      if (c.test) {
+        str += this.indent() + `case ${this.visitExpression(c.test)}:\n`;
+      } else {
+        str += this.indent() + `default:\n`;
+      }
+      this.indentLevel++;
+      for (const s of c.consequent) {
+        str += this.indent() + this.visitStatement(s) + '\n';
+      }
+      this.indentLevel--;
+    }
+    this.indentLevel--;
+    str += this.indent() + '}';
+    return str;
+  }
+
   // Expressions
   private visitExpression(expr: AST.Expression): string {
     switch (expr.type) {
+      case 'TemplateLiteral': {
+        let javaExpr = (expr as AST.TemplateLiteral).value;
+        javaExpr = javaExpr.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n');
+        javaExpr = javaExpr.replace(/\$\{([^}]+)\}/g, 'X_PLUS_$1_PLUS_X');
+        javaExpr = '"' + javaExpr + '"';
+        javaExpr = javaExpr.replace(/X_PLUS_(.+?)_PLUS_X/g, '" + $1 + "');
+        javaExpr = javaExpr.replace(/^"" \+ /, '');
+        javaExpr = javaExpr.replace(/ \+ ""$/, '');
+        return javaExpr;
+      }
       case 'Literal': {
         // Escape inner double quotes in string literals for Java
         if (typeof expr.value === 'string') {
@@ -291,6 +434,9 @@ export class CodeGenerator {
           return String(expr.value);
         }
         return expr.raw;
+      }
+      case 'UnaryExpression': {
+        return `${expr.operator}${this.visitExpression(expr.argument)}`;
       }
       case 'Identifier': {
         return expr.name;
@@ -309,7 +455,13 @@ export class CodeGenerator {
         if ((expr.operator === '!==' || expr.operator === '!=') && expr.left.type === 'Literal' && typeof expr.left.value === 'string') {
           return `!${this.visitExpression(expr.left)}.equals(${this.visitExpression(expr.right)})`;
         }
-        return `${this.visitExpression(expr.left)} ${expr.operator} ${this.visitExpression(expr.right)}`;
+
+        // Map JS strict equality to Java equality
+        let javaOp = expr.operator;
+        if (javaOp === '===') javaOp = '==';
+        if (javaOp === '!==') javaOp = '!=';
+
+        return `${this.visitExpression(expr.left)} ${javaOp} ${this.visitExpression(expr.right)} `;
       }
       case 'AssignmentExpression': {
         // Handle StringBuilder vars: data += chunk -> data.append(chunk)
@@ -321,17 +473,27 @@ export class CodeGenerator {
           && expr.left.object.type === 'Identifier' && this.jsonObjectVars.has(expr.left.object.name)) {
           return `${expr.left.object.name}.set("${expr.left.property.name}", ${this.visitExpression(expr.right)})`;
         }
-        return `${this.visitExpression(expr.left)} ${expr.operator} ${this.visitExpression(expr.right)}`;
+        return `${this.visitExpression(expr.left)} ${expr.operator} ${this.visitExpression(expr.right)} `;
       }
       case 'CallExpression': return this.visitCallExpression(expr);
       case 'MemberExpression': {
+        if (expr.property.name === 'length') {
+          if (expr.object.type === 'Identifier') {
+            const type = this.variableTypes.get(expr.object.name);
+            if (type && type.endsWith('[]')) {
+              return `${this.visitExpression(expr.object)}.length`;
+            }
+          }
+          return `${this.visitExpression(expr.object)}.length()`;
+        }
+
         // Rewrite default-import member expressions: http.get(...) -> Http.get(...)
         if (expr.object.type === 'Identifier' && this.importAliases.has(expr.object.name)) {
-          return `${this.importAliases.get(expr.object.name)}.${expr.property.name}`;
+          return `${this.importAliases.get(expr.object.name)}.${expr.property.name} `;
         }
         // Rewrite JS globals: JSON.parse -> Json.parse
         if (expr.object.type === 'Identifier' && GLOBAL_REWRITES[expr.object.name]) {
-          return `${GLOBAL_REWRITES[expr.object.name]}.${expr.property.name}`;
+          return `${GLOBAL_REWRITES[expr.object.name]}.${expr.property.name} `;
         }
         // Rewrite JSON object property access: obj.name -> obj.get("name")
         if (expr.object.type === 'Identifier' && this.jsonObjectVars.has(expr.object.name)) {
@@ -340,7 +502,22 @@ export class CodeGenerator {
         return `${this.visitExpression(expr.object)}.${expr.property.name}`;
       }
       case 'ArrowFunctionExpression': return this.visitArrowFunctionExpression(expr);
-      case 'NewExpression': return `new ${this.visitExpression(expr.callee)}(${expr.arguments.map(a => this.visitExpression(a)).join(', ')})`;
+      case 'ArrayExpression': {
+        if (expr.elements.length === 0) return 'new Object[]{}';
+        let javaType = 'Object';
+        const firstClass = expr.elements[0]?.type;
+        if (firstClass === 'Literal') {
+          if (typeof (expr.elements[0] as AST.Literal).value === 'number') javaType = 'double';
+          else if (typeof (expr.elements[0] as AST.Literal).value === 'string') javaType = 'String';
+          else if (typeof (expr.elements[0] as AST.Literal).value === 'boolean') javaType = 'boolean';
+        }
+        return `new ${javaType}[]{${expr.elements.map(e => this.visitExpression(e)).join(', ')}}`;
+      }
+      case 'NewExpression': {
+        const calleeStr = this.visitExpression(expr.callee);
+        const mappedCallee = calleeStr === 'Error' ? 'RuntimeException' : calleeStr;
+        return `new ${mappedCallee}(${expr.arguments.map(a => this.visitExpression(a)).join(', ')})`;
+      }
       // @ts-ignore
       default: return `/* Unhandled Expression: ${expr.type} */`;
     }
@@ -353,25 +530,31 @@ export class CodeGenerator {
       : this.visitExpression(expr.body);
 
     // Java lambda format: (param1, param2) -> { body }
-    return `(${params}) -> ${bodyStr}`;
+    return `(${params}) -> ${bodyStr} `;
   }
 
   private visitCallExpression(call: AST.CallExpression): string {
-    // Check for `console.log` standard mapping
+    // Check for `console.log` standard mapping and other native method intercepts
     if (call.callee.type === 'MemberExpression') {
-      const calleeStr = this.visitExpression(call.callee);
-      if (calleeStr === 'console.log') {
+      const calleeObjStr = this.visitExpression(call.callee.object);
+      const prop = call.callee.property.name;
+
+      if (calleeObjStr === 'console' && prop === 'log') {
         return `System.out.println(${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
+      }
+
+      if (prop === 'includes') {
+        return `${calleeObjStr}.contains(${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
       }
     }
 
     // Check for named-import direct calls: writeFile(...) -> Fs.writeFile(...)
     if (call.callee.type === 'Identifier' && this.importAliases.has(call.callee.name)) {
       const javaClass = this.importAliases.get(call.callee.name);
-      return `${javaClass}.${call.callee.name}(${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
+      return `${javaClass}.${call.callee.name} (${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
     }
 
-    return `${this.visitExpression(call.callee)}(${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
+    return `${this.visitExpression(call.callee)} (${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
   }
 
   // Visit an expression used as a function argument — converts StringBuilder to String via .toString(),
@@ -379,7 +562,7 @@ export class CodeGenerator {
   private visitArgExpression(expr: AST.Expression): string {
     // Convert bare function references to Java method references: handler -> ClassName::handler
     if (expr.type === 'Identifier' && this.declaredFunctions.has(expr.name)) {
-      return `${this.className}::${expr.name}`;
+      return `${this.className}::${expr.name} `;
     }
     const result = this.visitExpression(expr);
     if (expr.type === 'Identifier' && this.stringBuilderVars.has(expr.name)) {
@@ -397,6 +580,7 @@ export class CodeGenerator {
         case 'boolean': return 'boolean';
         case 'void': return 'void';
         case 'any': return 'Object';
+        case 'null': return 'Object';
         default: return 'Object';
       }
     } else if (typeNode.type === 'TypeReference') {
@@ -406,6 +590,11 @@ export class CodeGenerator {
         // QualifiedName logic
         return 'Object'; // simplified for now
       }
+    } else if (typeNode.type === 'ArrayType') {
+      return this.mapType((typeNode as AST.ArrayType).elementType) + '[]';
+    } else if (typeNode.type === 'UnionType') {
+      const firstType = (typeNode as AST.UnionType).types[0];
+      return firstType ? this.mapType(firstType) : 'Object';
     }
     return 'Object';
   }

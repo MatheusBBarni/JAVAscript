@@ -18,6 +18,15 @@ export enum TokenType {
   NULL = 'NULL',
   TRUE = 'TRUE',
   FALSE = 'FALSE',
+  TRY = 'TRY',
+  CATCH = 'CATCH',
+  FINALLY = 'FINALLY',
+  SWITCH = 'SWITCH',
+  CASE = 'CASE',
+  DEFAULT = 'DEFAULT',
+  BREAK = 'BREAK',
+  OF = 'OF',
+  TEMPLATE = 'TEMPLATE',
 
   // Types
   TYPE_NUMBER = 'TYPE_NUMBER',
@@ -56,7 +65,9 @@ export enum TokenType {
   GREATER_EQ = 'GREATER_EQ',
   ARROW = 'ARROW', // =>
   PIPE = 'PIPE', // |
+  PIPE_PIPE = 'PIPE_PIPE', // ||
   AMPERSAND = 'AMPERSAND', // &
+  AMP_AMP = 'AMP_AMP', // &&
   QUESTION = 'QUESTION', // ?
   PLUS_EQ = 'PLUS_EQ', // +=
   MINUS_EQ = 'MINUS_EQ', // -=

@@ -1,0 +1,541 @@
+Source: 13-try-catch.ts
+
+Tokens:
+Token(FUNCTION, "function", line=1, col=1)
+Token(IDENTIFIER, "riskyFunction", line=1, col=10)
+Token(L_PAREN, "(", line=1, col=23)
+Token(IDENTIFIER, "a", line=1, col=24)
+Token(COLON, ":", line=1, col=25)
+Token(TYPE_NUMBER, "number", line=1, col=27)
+Token(COMMA, ",", line=1, col=33)
+Token(IDENTIFIER, "b", line=1, col=35)
+Token(COLON, ":", line=1, col=36)
+Token(TYPE_NUMBER, "number", line=1, col=38)
+Token(R_PAREN, ")", line=1, col=44)
+Token(COLON, ":", line=1, col=45)
+Token(TYPE_NUMBER, "number", line=1, col=47)
+Token(L_BRACE, "{", line=1, col=54)
+Token(IF, "if", line=2, col=3)
+Token(L_PAREN, "(", line=2, col=6)
+Token(IDENTIFIER, "b", line=2, col=7)
+Token(EQ_EQ_EQ, "===", line=2, col=9)
+Token(NUMBER, "0", line=2, col=13)
+Token(R_PAREN, ")", line=2, col=14)
+Token(L_BRACE, "{", line=2, col=16)
+Token(IDENTIFIER, "throw", line=3, col=5)
+Token(NEW, "new", line=3, col=11)
+Token(IDENTIFIER, "Error", line=3, col=15)
+Token(L_PAREN, "(", line=3, col=20)
+Token(STRING, "Division by zero", line=3, col=21)
+Token(R_PAREN, ")", line=3, col=39)
+Token(SEMICOLON, ";", line=3, col=40)
+Token(R_BRACE, "}", line=4, col=3)
+Token(RETURN, "return", line=5, col=3)
+Token(IDENTIFIER, "a", line=5, col=10)
+Token(SLASH, "/", line=5, col=12)
+Token(IDENTIFIER, "b", line=5, col=14)
+Token(SEMICOLON, ";", line=5, col=15)
+Token(R_BRACE, "}", line=6, col=1)
+Token(FUNCTION, "function", line=8, col=1)
+Token(IDENTIFIER, "main", line=8, col=10)
+Token(L_PAREN, "(", line=8, col=14)
+Token(R_PAREN, ")", line=8, col=15)
+Token(COLON, ":", line=8, col=16)
+Token(TYPE_VOID, "void", line=8, col=18)
+Token(L_BRACE, "{", line=8, col=23)
+Token(TRY, "try", line=9, col=3)
+Token(L_BRACE, "{", line=9, col=7)
+Token(IDENTIFIER, "console", line=10, col=5)
+Token(DOT, ".", line=10, col=12)
+Token(IDENTIFIER, "log", line=10, col=13)
+Token(L_PAREN, "(", line=10, col=16)
+Token(IDENTIFIER, "riskyFunction", line=10, col=17)
+Token(L_PAREN, "(", line=10, col=30)
+Token(NUMBER, "10", line=10, col=31)
+Token(COMMA, ",", line=10, col=33)
+Token(NUMBER, "2", line=10, col=35)
+Token(R_PAREN, ")", line=10, col=36)
+Token(R_PAREN, ")", line=10, col=37)
+Token(SEMICOLON, ";", line=10, col=38)
+Token(IDENTIFIER, "console", line=11, col=5)
+Token(DOT, ".", line=11, col=12)
+Token(IDENTIFIER, "log", line=11, col=13)
+Token(L_PAREN, "(", line=11, col=16)
+Token(IDENTIFIER, "riskyFunction", line=11, col=17)
+Token(L_PAREN, "(", line=11, col=30)
+Token(NUMBER, "10", line=11, col=31)
+Token(COMMA, ",", line=11, col=33)
+Token(NUMBER, "0", line=11, col=35)
+Token(R_PAREN, ")", line=11, col=36)
+Token(R_PAREN, ")", line=11, col=37)
+Token(SEMICOLON, ";", line=11, col=38)
+Token(IDENTIFIER, "console", line=12, col=5)
+Token(DOT, ".", line=12, col=12)
+Token(IDENTIFIER, "log", line=12, col=13)
+Token(L_PAREN, "(", line=12, col=16)
+Token(STRING, "This will not be printed", line=12, col=17)
+Token(R_PAREN, ")", line=12, col=43)
+Token(SEMICOLON, ";", line=12, col=44)
+Token(R_BRACE, "}", line=13, col=3)
+Token(CATCH, "catch", line=13, col=5)
+Token(L_PAREN, "(", line=13, col=11)
+Token(IDENTIFIER, "e", line=13, col=12)
+Token(COLON, ":", line=13, col=13)
+Token(TYPE_ANY, "any", line=13, col=15)
+Token(R_PAREN, ")", line=13, col=18)
+Token(L_BRACE, "{", line=13, col=20)
+Token(IDENTIFIER, "console", line=14, col=5)
+Token(DOT, ".", line=14, col=12)
+Token(IDENTIFIER, "log", line=14, col=13)
+Token(L_PAREN, "(", line=14, col=16)
+Token(STRING, "Caught an error", line=14, col=17)
+Token(R_PAREN, ")", line=14, col=34)
+Token(SEMICOLON, ";", line=14, col=35)
+Token(R_BRACE, "}", line=15, col=3)
+Token(FINALLY, "finally", line=15, col=5)
+Token(L_BRACE, "{", line=15, col=13)
+Token(IDENTIFIER, "console", line=16, col=5)
+Token(DOT, ".", line=16, col=12)
+Token(IDENTIFIER, "log", line=16, col=13)
+Token(L_PAREN, "(", line=16, col=16)
+Token(STRING, "Finally block executed", line=16, col=17)
+Token(R_PAREN, ")", line=16, col=41)
+Token(SEMICOLON, ";", line=16, col=42)
+Token(R_BRACE, "}", line=17, col=3)
+Token(R_BRACE, "}", line=18, col=1)
+Token(IDENTIFIER, "main", line=20, col=1)
+Token(L_PAREN, "(", line=20, col=5)
+Token(R_PAREN, ")", line=20, col=6)
+Token(SEMICOLON, ";", line=20, col=7)
+Token(EOF, "", line=21, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "riskyFunction"
+      },
+      "params": [
+        {
+          "type": "Identifier",
+          "name": "a",
+          "typeAnnotation": {
+            "type": "KeywordType",
+            "name": "number",
+            "line": 1,
+            "column": 27
+          }
+        },
+        {
+          "type": "Identifier",
+          "name": "b",
+          "typeAnnotation": {
+            "type": "KeywordType",
+            "name": "number",
+            "line": 1,
+            "column": 38
+          }
+        }
+      ],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "number",
+        "line": 1,
+        "column": 47
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "IfStatement",
+            "test": {
+              "type": "BinaryExpression",
+              "operator": "===",
+              "left": {
+                "type": "Identifier",
+                "name": "b",
+                "line": 2,
+                "column": 7
+              },
+              "right": {
+                "type": "Literal",
+                "value": 0,
+                "raw": "0",
+                "line": 2,
+                "column": 13
+              },
+              "line": 2,
+              "column": 7
+            },
+            "consequent": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ThrowStatement",
+                  "argument": {
+                    "type": "NewExpression",
+                    "callee": {
+                      "type": "Identifier",
+                      "name": "Error",
+                      "line": 3,
+                      "column": 15
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "Division by zero",
+                        "raw": "\"Division by zero\"",
+                        "line": 3,
+                        "column": 21
+                      }
+                    ],
+                    "line": 3,
+                    "column": 11
+                  },
+                  "line": 3,
+                  "column": 5
+                }
+              ],
+              "line": 2,
+              "column": 16
+            },
+            "line": 2,
+            "column": 3
+          },
+          {
+            "type": "ReturnStatement",
+            "argument": {
+              "type": "BinaryExpression",
+              "operator": "/",
+              "left": {
+                "type": "Identifier",
+                "name": "a",
+                "line": 5,
+                "column": 10
+              },
+              "right": {
+                "type": "Identifier",
+                "name": "b",
+                "line": 5,
+                "column": 14
+              },
+              "line": 5,
+              "column": 10
+            },
+            "line": 5,
+            "column": 3
+          }
+        ],
+        "line": 1,
+        "column": 54
+      },
+      "line": 1,
+      "column": 1
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "main"
+      },
+      "params": [],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 8,
+        "column": 18
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "TryStatement",
+            "block": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 10,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 10,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "riskyFunction",
+                          "line": 10,
+                          "column": 17
+                        },
+                        "arguments": [
+                          {
+                            "type": "Literal",
+                            "value": 10,
+                            "raw": "10",
+                            "line": 10,
+                            "column": 31
+                          },
+                          {
+                            "type": "Literal",
+                            "value": 2,
+                            "raw": "2",
+                            "line": 10,
+                            "column": 35
+                          }
+                        ],
+                        "line": 10,
+                        "column": 17
+                      }
+                    ],
+                    "line": 10,
+                    "column": 5
+                  },
+                  "line": 10,
+                  "column": 5
+                },
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 11,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 11,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "riskyFunction",
+                          "line": 11,
+                          "column": 17
+                        },
+                        "arguments": [
+                          {
+                            "type": "Literal",
+                            "value": 10,
+                            "raw": "10",
+                            "line": 11,
+                            "column": 31
+                          },
+                          {
+                            "type": "Literal",
+                            "value": 0,
+                            "raw": "0",
+                            "line": 11,
+                            "column": 35
+                          }
+                        ],
+                        "line": 11,
+                        "column": 17
+                      }
+                    ],
+                    "line": 11,
+                    "column": 5
+                  },
+                  "line": 11,
+                  "column": 5
+                },
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 12,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 12,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "This will not be printed",
+                        "raw": "\"This will not be printed\"",
+                        "line": 12,
+                        "column": 17
+                      }
+                    ],
+                    "line": 12,
+                    "column": 5
+                  },
+                  "line": 12,
+                  "column": 5
+                }
+              ],
+              "line": 9,
+              "column": 3
+            },
+            "handler": {
+              "type": "CatchClause",
+              "param": {
+                "type": "Identifier",
+                "name": "e",
+                "line": 13,
+                "column": 12
+              },
+              "paramType": {
+                "type": "KeywordType",
+                "name": "any",
+                "line": 13,
+                "column": 15
+              },
+              "body": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "object": {
+                          "type": "Identifier",
+                          "name": "console",
+                          "line": 14,
+                          "column": 5
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "log"
+                        },
+                        "computed": false,
+                        "line": 14,
+                        "column": 5
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "value": "Caught an error",
+                          "raw": "\"Caught an error\"",
+                          "line": 14,
+                          "column": 17
+                        }
+                      ],
+                      "line": 14,
+                      "column": 5
+                    },
+                    "line": 14,
+                    "column": 5
+                  }
+                ],
+                "line": 13,
+                "column": 18
+              },
+              "line": 13,
+              "column": 5
+            },
+            "finalizer": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 16,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 16,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "Finally block executed",
+                        "raw": "\"Finally block executed\"",
+                        "line": 16,
+                        "column": 17
+                      }
+                    ],
+                    "line": 16,
+                    "column": 5
+                  },
+                  "line": 16,
+                  "column": 5
+                }
+              ],
+              "line": 15,
+              "column": 5
+            },
+            "line": 9,
+            "column": 3
+          }
+        ],
+        "line": 8,
+        "column": 23
+      },
+      "line": 8,
+      "column": 1
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "Identifier",
+          "name": "main",
+          "line": 20,
+          "column": 1
+        },
+        "arguments": [],
+        "line": 20,
+        "column": 1
+      },
+      "line": 20,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}
