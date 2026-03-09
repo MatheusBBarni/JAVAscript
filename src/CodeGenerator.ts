@@ -89,6 +89,7 @@ export class CodeGenerator {
       for (const stmt of topLevelStatements) {
         if (stmt.type === 'FunctionDeclaration') {
           functions.push(stmt);
+          if (stmt.id) this.declaredFunctions.add(stmt.id.name);
         } else if (stmt.type === 'ExportNamedDeclaration' && stmt.declaration?.type === 'FunctionDeclaration') {
           functions.push(stmt.declaration as AST.FunctionDeclaration);
         } else if (stmt.type === 'ExportNamedDeclaration' && stmt.declaration?.type === 'VariableDeclaration') {
@@ -143,6 +144,8 @@ export class CodeGenerator {
   private stringBuilderVars: Set<string> = new Set();
   // Track variables that hold JSON parsed objects (for property access rewriting)
   private jsonObjectVars: Set<string> = new Set();
+  // Track declared function names (for method reference conversion)
+  private declaredFunctions: Set<string> = new Set();
 
   private visitVariableDeclaration(decl: AST.VariableDeclaration): string {
     return decl.declarations.map(d => {
@@ -178,7 +181,17 @@ export class CodeGenerator {
   private visitFunctionDeclaration(decl: AST.FunctionDeclaration, isStatic: boolean = false): string {
     const modifiers = isStatic ? 'public static' : 'public';
     const returnType = decl.returnType ? this.mapType(decl.returnType) : 'void';
-    const params = decl.params.map(p => {
+
+    // Detect HTTP handler pattern: 2 params both typed as 'any'
+    const isHttpHandler = decl.params.length === 2
+      && decl.params.every(p => p.typeAnnotation?.type === 'KeywordType' && (p.typeAnnotation as any).name === 'any');
+
+    const params = decl.params.map((p, i) => {
+      if (isHttpHandler) {
+        // Map to Http.ServerRequest / Http.ServerResponse
+        const httpType = i === 0 ? 'Http.ServerRequest' : 'Http.ServerResponse';
+        return `${httpType} ${p.name}`;
+      }
       const pType = p.typeAnnotation ? this.mapType(p.typeAnnotation) : 'Object';
       return `${pType} ${p.name}`;
     }).join(', ');
@@ -268,6 +281,10 @@ export class CodeGenerator {
           const escaped = expr.value.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
           return `"${escaped}"`;
         }
+        // For numbers, emit integers without decimal point
+        if (typeof expr.value === 'number' && Number.isInteger(expr.value)) {
+          return String(expr.value);
+        }
         return expr.raw;
       }
       case 'Identifier': {
@@ -304,6 +321,7 @@ export class CodeGenerator {
       }
       case 'ArrowFunctionExpression': return this.visitArrowFunctionExpression(expr);
       case 'NewExpression': return `new ${this.visitExpression(expr.callee)}(${expr.arguments.map(a => this.visitExpression(a)).join(', ')})`;
+      // @ts-ignore
       default: return `/* Unhandled Expression: ${expr.type} */`;
     }
   }
@@ -336,8 +354,13 @@ export class CodeGenerator {
     return `${this.visitExpression(call.callee)}(${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
   }
 
-  // Visit an expression used as a function argument — converts StringBuilder to String via .toString()
+  // Visit an expression used as a function argument — converts StringBuilder to String via .toString(),
+  // and converts function references to Java method references.
   private visitArgExpression(expr: AST.Expression): string {
+    // Convert bare function references to Java method references: handler -> ClassName::handler
+    if (expr.type === 'Identifier' && this.declaredFunctions.has(expr.name)) {
+      return `${this.className}::${expr.name}`;
+    }
     const result = this.visitExpression(expr);
     if (expr.type === 'Identifier' && this.stringBuilderVars.has(expr.name)) {
       return `${result}.toString()`;
