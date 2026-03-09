@@ -1,8 +1,17 @@
 import * as AST from './AST';
 
+// Maps known TS/Node.js module names to their Java wrapper class names
+const MODULE_MAP: Record<string, string> = {
+  'fs': 'Fs',
+  'http': 'Http',
+};
+
 export class CodeGenerator {
   private indentLevel: number = 0;
   private className: string;
+  // Maps imported identifiers to their Java wrapper class name
+  // e.g. { 'writeFile': 'Fs', 'http': 'Http' }
+  private importAliases: Map<string, string> = new Map();
 
   constructor(className: string = 'Main') {
     this.className = className;
@@ -10,6 +19,9 @@ export class CodeGenerator {
 
   generate(program: AST.Program): string {
     let output = '';
+
+    // Reset aliases for each generation
+    this.importAliases = new Map();
 
     // Collect imports and top-level definitions
     const imports: string[] = [];
@@ -23,11 +35,23 @@ export class CodeGenerator {
           : stmt.source.value as string;
 
         if (stmt.source.type === 'JavaPackageSource') {
-          // In a real scenario, these packages exist. For our compile test, we comment them out so javac doesn't fail.
-          imports.push(`// import ${importSrc}; (Mocked for compilation)`);
+          imports.push(`import ${importSrc};`);
+        } else if (stmt.source.type === 'Literal' && typeof stmt.source.value === 'string' && MODULE_MAP[stmt.source.value]) {
+          // Mapped module (e.g. 'fs' -> Fs, 'http' -> Http)
+          const javaClass = MODULE_MAP[stmt.source.value]!;
+          // Track all imported identifiers so we can rewrite calls later
+          for (const spec of stmt.specifiers) {
+            if (spec.type === 'ImportDefaultSpecifier') {
+              // e.g. import http from 'http' -> http.get(...) becomes Http.get(...)
+              this.importAliases.set(spec.local.name, javaClass);
+            } else if (spec.type === 'ImportSpecifier') {
+              // e.g. import { writeFile } from 'fs' -> writeFile(...) becomes Fs.writeFile(...)
+              this.importAliases.set(spec.local.name, javaClass);
+            }
+          }
+          // No Java import statement needed — wrappers are on the classpath in default package
         } else {
-          // Standard TS literal import -> Ignore or translate if needed.
-          // For now, keep as comment to show it was parsed
+          // Unknown literal import -> keep as comment
           imports.push(`// import from ${importSrc}`);
         }
       } else if (stmt.type === 'ClassDeclaration') {
@@ -110,16 +134,24 @@ export class CodeGenerator {
     }
   }
 
+  // Track variables that should be StringBuilder for lambda safety
+  private stringBuilderVars: Set<string> = new Set();
+
   private visitVariableDeclaration(decl: AST.VariableDeclaration): string {
     return decl.declarations.map(d => {
       // In Java, `var` is supported in newer versions, but we should map correctly if possible.
-      // Top-level variables in our synthetic main class logic are currently printed *inside* main().
-      // This is fine. If they were outside, they'd need `static`.
       let typeStr = 'var';
       if (d.typeAnnotation) {
         typeStr = this.mapType(d.typeAnnotation);
       } else if (decl.kind === 'const') {
         typeStr = 'final var';
+      }
+
+      // For mutable string variables (let), use StringBuilder to allow mutation in lambdas
+      if (decl.kind === 'let' && typeStr === 'String') {
+        this.stringBuilderVars.add(d.id.name);
+        const initVal = d.init ? this.visitExpression(d.init) : '""';
+        return `StringBuilder ${d.id.name} = new StringBuilder(${initVal});`;
       }
 
       const init = d.init ? ` = ${this.visitExpression(d.init)}` : '';
@@ -182,7 +214,15 @@ export class CodeGenerator {
   }
 
   private visitIfStatement(ifStmt: AST.IfStatement): string {
-    let str = `if (${this.visitExpression(ifStmt.test)}) \n`;
+    // In Java, bare identifiers can't be used as booleans (JS truthiness).
+    // Convert `if (x)` to `if (x != null)` for non-boolean identifiers.
+    let testStr: string;
+    if (ifStmt.test.type === 'Identifier') {
+      testStr = `${ifStmt.test.name} != null`;
+    } else {
+      testStr = this.visitExpression(ifStmt.test);
+    }
+    let str = `if (${testStr}) \n`;
     this.indentLevel++;
     str += this.indent() + this.visitStatement(ifStmt.consequent);
     this.indentLevel--;
@@ -207,11 +247,25 @@ export class CodeGenerator {
   private visitExpression(expr: AST.Expression): string {
     switch (expr.type) {
       case 'Literal': return expr.raw;
-      case 'Identifier': return expr.name;
+      case 'Identifier': {
+        return expr.name;
+      }
       case 'BinaryExpression': return `${this.visitExpression(expr.left)} ${expr.operator} ${this.visitExpression(expr.right)}`;
-      case 'AssignmentExpression': return `${this.visitExpression(expr.left)} ${expr.operator} ${this.visitExpression(expr.right)}`;
+      case 'AssignmentExpression': {
+        // Handle StringBuilder vars: data += chunk -> data.append(chunk)
+        if (expr.operator === '+=' && expr.left.type === 'Identifier' && this.stringBuilderVars.has(expr.left.name)) {
+          return `${expr.left.name}.append(${this.visitExpression(expr.right)})`;
+        }
+        return `${this.visitExpression(expr.left)} ${expr.operator} ${this.visitExpression(expr.right)}`;
+      }
       case 'CallExpression': return this.visitCallExpression(expr);
-      case 'MemberExpression': return `${this.visitExpression(expr.object)}.${expr.property.name}`;
+      case 'MemberExpression': {
+        // Rewrite default-import member expressions: http.get(...) -> Http.get(...)
+        if (expr.object.type === 'Identifier' && this.importAliases.has(expr.object.name)) {
+          return `${this.importAliases.get(expr.object.name)}.${expr.property.name}`;
+        }
+        return `${this.visitExpression(expr.object)}.${expr.property.name}`;
+      }
       case 'ArrowFunctionExpression': return this.visitArrowFunctionExpression(expr);
       case 'NewExpression': return `new ${this.visitExpression(expr.callee)}(${expr.arguments.map(a => this.visitExpression(a)).join(', ')})`;
       default: return `/* Unhandled Expression: ${expr.type} */`;
@@ -233,10 +287,26 @@ export class CodeGenerator {
     if (call.callee.type === 'MemberExpression') {
       const calleeStr = this.visitExpression(call.callee);
       if (calleeStr === 'console.log') {
-        return `System.out.println(${call.arguments.map(a => this.visitExpression(a)).join(', ')})`;
+        return `System.out.println(${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
       }
     }
-    return `${this.visitExpression(call.callee)}(${call.arguments.map(a => this.visitExpression(a)).join(', ')})`;
+
+    // Check for named-import direct calls: writeFile(...) -> Fs.writeFile(...)
+    if (call.callee.type === 'Identifier' && this.importAliases.has(call.callee.name)) {
+      const javaClass = this.importAliases.get(call.callee.name);
+      return `${javaClass}.${call.callee.name}(${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
+    }
+
+    return `${this.visitExpression(call.callee)}(${call.arguments.map(a => this.visitArgExpression(a)).join(', ')})`;
+  }
+
+  // Visit an expression used as a function argument — converts StringBuilder to String via .toString()
+  private visitArgExpression(expr: AST.Expression): string {
+    const result = this.visitExpression(expr);
+    if (expr.type === 'Identifier' && this.stringBuilderVars.has(expr.name)) {
+      return `${result}.toString()`;
+    }
+    return result;
   }
 
   // Utilities
