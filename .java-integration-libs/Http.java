@@ -105,9 +105,12 @@ public class Http {
      */
     public static class ServerRequest {
         private final HttpExchange exchange;
+        /** The request URL path + query string. Mirrors req.url in Node.js */
+        public final String url;
 
         public ServerRequest(HttpExchange exchange) {
             this.exchange = exchange;
+            this.url = exchange.getRequestURI().toString();
         }
 
         public String getMethod() {
@@ -115,7 +118,23 @@ public class Http {
         }
 
         public String getUrl() {
-            return exchange.getRequestURI().toString();
+            return url;
+        }
+
+        /**
+         * Extracts a query parameter value from the URL.
+         * Mirrors a simplified version of url.parse(req.url, true).query[name]
+         */
+        public String query(String name) {
+            String rawQuery = exchange.getRequestURI().getRawQuery();
+            if (rawQuery == null) return null;
+            for (String param : rawQuery.split("&")) {
+                String[] pair = param.split("=", 2);
+                if (pair.length == 2 && pair[0].equals(name)) {
+                    return pair[1];
+                }
+            }
+            return null;
         }
 
         public String getBody() {

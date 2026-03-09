@@ -256,10 +256,15 @@ export class CodeGenerator {
     str += this.indent() + this.visitStatement(ifStmt.consequent);
     this.indentLevel--;
     if (ifStmt.alternate) {
-      str += '\n' + this.indent() + 'else \n';
-      this.indentLevel++;
-      str += this.indent() + this.visitStatement(ifStmt.alternate);
-      this.indentLevel--;
+      // Handle else-if: emit `else if (...)` inline
+      if (ifStmt.alternate.type === 'IfStatement') {
+        str += '\n' + this.indent() + 'else ' + this.visitIfStatement(ifStmt.alternate as AST.IfStatement);
+      } else {
+        str += '\n' + this.indent() + 'else \n';
+        this.indentLevel++;
+        str += this.indent() + this.visitStatement(ifStmt.alternate);
+        this.indentLevel--;
+      }
     }
     return str;
   }
@@ -290,7 +295,22 @@ export class CodeGenerator {
       case 'Identifier': {
         return expr.name;
       }
-      case 'BinaryExpression': return `${this.visitExpression(expr.left)} ${expr.operator} ${this.visitExpression(expr.right)}`;
+      case 'BinaryExpression': {
+        // Convert === / !== with string literals to .equals() in Java
+        if ((expr.operator === '===' || expr.operator === '==') && expr.right.type === 'Literal' && typeof expr.right.value === 'string') {
+          return `${this.visitExpression(expr.right)}.equals(${this.visitExpression(expr.left)})`;
+        }
+        if ((expr.operator === '!==' || expr.operator === '!=') && expr.right.type === 'Literal' && typeof expr.right.value === 'string') {
+          return `!${this.visitExpression(expr.right)}.equals(${this.visitExpression(expr.left)})`;
+        }
+        if ((expr.operator === '===' || expr.operator === '==') && expr.left.type === 'Literal' && typeof expr.left.value === 'string') {
+          return `${this.visitExpression(expr.left)}.equals(${this.visitExpression(expr.right)})`;
+        }
+        if ((expr.operator === '!==' || expr.operator === '!=') && expr.left.type === 'Literal' && typeof expr.left.value === 'string') {
+          return `!${this.visitExpression(expr.left)}.equals(${this.visitExpression(expr.right)})`;
+        }
+        return `${this.visitExpression(expr.left)} ${expr.operator} ${this.visitExpression(expr.right)}`;
+      }
       case 'AssignmentExpression': {
         // Handle StringBuilder vars: data += chunk -> data.append(chunk)
         if (expr.operator === '+=' && expr.left.type === 'Identifier' && this.stringBuilderVars.has(expr.left.name)) {

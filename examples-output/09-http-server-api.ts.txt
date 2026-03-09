@@ -1,0 +1,1087 @@
+Source: 09-http-server-api.ts
+
+Tokens:
+Token(IMPORT, "import", line=1, col=1)
+Token(IDENTIFIER, "http", line=1, col=8)
+Token(FROM, "from", line=1, col=13)
+Token(STRING, "http", line=1, col=18)
+Token(SEMICOLON, ";", line=1, col=24)
+Token(IMPORT, "import", line=2, col=1)
+Token(L_BRACE, "{", line=2, col=8)
+Token(IDENTIFIER, "readFileSync", line=2, col=10)
+Token(R_BRACE, "}", line=2, col=23)
+Token(FROM, "from", line=2, col=25)
+Token(STRING, "fs", line=2, col=30)
+Token(SEMICOLON, ";", line=2, col=34)
+Token(FUNCTION, "function", line=4, col=1)
+Token(IDENTIFIER, "handler", line=4, col=10)
+Token(L_PAREN, "(", line=4, col=17)
+Token(IDENTIFIER, "req", line=4, col=18)
+Token(COLON, ":", line=4, col=21)
+Token(TYPE_ANY, "any", line=4, col=23)
+Token(COMMA, ",", line=4, col=26)
+Token(IDENTIFIER, "res", line=4, col=28)
+Token(COLON, ":", line=4, col=31)
+Token(TYPE_ANY, "any", line=4, col=33)
+Token(R_PAREN, ")", line=4, col=36)
+Token(COLON, ":", line=4, col=37)
+Token(TYPE_VOID, "void", line=4, col=39)
+Token(L_BRACE, "{", line=4, col=44)
+Token(CONST, "const", line=5, col=3)
+Token(IDENTIFIER, "fileContent", line=5, col=9)
+Token(COLON, ":", line=5, col=20)
+Token(TYPE_STRING, "string", line=5, col=22)
+Token(EQUALS, "=", line=5, col=29)
+Token(IDENTIFIER, "readFileSync", line=5, col=31)
+Token(L_PAREN, "(", line=5, col=43)
+Token(STRING, "examples/test-data/users.json", line=5, col=44)
+Token(COMMA, ",", line=5, col=75)
+Token(STRING, "utf-8", line=5, col=77)
+Token(R_PAREN, ")", line=5, col=84)
+Token(SEMICOLON, ";", line=5, col=85)
+Token(IF, "if", line=7, col=3)
+Token(L_PAREN, "(", line=7, col=6)
+Token(IDENTIFIER, "req", line=7, col=7)
+Token(DOT, ".", line=7, col=10)
+Token(IDENTIFIER, "url", line=7, col=11)
+Token(EQ_EQ_EQ, "===", line=7, col=15)
+Token(STRING, "/all", line=7, col=19)
+Token(R_PAREN, ")", line=7, col=25)
+Token(L_BRACE, "{", line=7, col=27)
+Token(IDENTIFIER, "res", line=8, col=5)
+Token(DOT, ".", line=8, col=8)
+Token(IDENTIFIER, "writeHead", line=8, col=9)
+Token(L_PAREN, "(", line=8, col=18)
+Token(NUMBER, "200", line=8, col=19)
+Token(COMMA, ",", line=8, col=22)
+Token(STRING, "OK", line=8, col=24)
+Token(R_PAREN, ")", line=8, col=28)
+Token(SEMICOLON, ";", line=8, col=29)
+Token(IDENTIFIER, "res", line=9, col=5)
+Token(DOT, ".", line=9, col=8)
+Token(IDENTIFIER, "end", line=9, col=9)
+Token(L_PAREN, "(", line=9, col=12)
+Token(IDENTIFIER, "fileContent", line=9, col=13)
+Token(R_PAREN, ")", line=9, col=24)
+Token(SEMICOLON, ";", line=9, col=25)
+Token(R_BRACE, "}", line=10, col=3)
+Token(ELSE, "else", line=10, col=5)
+Token(IF, "if", line=10, col=10)
+Token(L_PAREN, "(", line=10, col=13)
+Token(IDENTIFIER, "req", line=10, col=14)
+Token(DOT, ".", line=10, col=17)
+Token(IDENTIFIER, "url", line=10, col=18)
+Token(DOT, ".", line=10, col=21)
+Token(IDENTIFIER, "startsWith", line=10, col=22)
+Token(L_PAREN, "(", line=10, col=32)
+Token(STRING, "/user", line=10, col=33)
+Token(R_PAREN, ")", line=10, col=40)
+Token(R_PAREN, ")", line=10, col=41)
+Token(L_BRACE, "{", line=10, col=43)
+Token(CONST, "const", line=11, col=5)
+Token(IDENTIFIER, "id", line=11, col=11)
+Token(COLON, ":", line=11, col=13)
+Token(TYPE_STRING, "string", line=11, col=15)
+Token(EQUALS, "=", line=11, col=22)
+Token(IDENTIFIER, "req", line=11, col=24)
+Token(DOT, ".", line=11, col=27)
+Token(IDENTIFIER, "query", line=11, col=28)
+Token(L_PAREN, "(", line=11, col=33)
+Token(STRING, "id", line=11, col=34)
+Token(R_PAREN, ")", line=11, col=38)
+Token(SEMICOLON, ";", line=11, col=39)
+Token(CONST, "const", line=12, col=5)
+Token(IDENTIFIER, "users", line=12, col=11)
+Token(EQUALS, "=", line=12, col=17)
+Token(IDENTIFIER, "JSON", line=12, col=19)
+Token(DOT, ".", line=12, col=23)
+Token(IDENTIFIER, "parseArray", line=12, col=24)
+Token(L_PAREN, "(", line=12, col=34)
+Token(IDENTIFIER, "fileContent", line=12, col=35)
+Token(R_PAREN, ")", line=12, col=46)
+Token(SEMICOLON, ";", line=12, col=47)
+Token(CONST, "const", line=13, col=5)
+Token(IDENTIFIER, "user", line=13, col=11)
+Token(EQUALS, "=", line=13, col=16)
+Token(IDENTIFIER, "users", line=13, col=18)
+Token(DOT, ".", line=13, col=23)
+Token(IDENTIFIER, "find", line=13, col=24)
+Token(L_PAREN, "(", line=13, col=28)
+Token(STRING, "id", line=13, col=29)
+Token(COMMA, ",", line=13, col=33)
+Token(IDENTIFIER, "id", line=13, col=35)
+Token(R_PAREN, ")", line=13, col=37)
+Token(SEMICOLON, ";", line=13, col=38)
+Token(IF, "if", line=14, col=5)
+Token(L_PAREN, "(", line=14, col=8)
+Token(IDENTIFIER, "user", line=14, col=9)
+Token(R_PAREN, ")", line=14, col=13)
+Token(L_BRACE, "{", line=14, col=15)
+Token(IDENTIFIER, "res", line=15, col=7)
+Token(DOT, ".", line=15, col=10)
+Token(IDENTIFIER, "writeHead", line=15, col=11)
+Token(L_PAREN, "(", line=15, col=20)
+Token(NUMBER, "200", line=15, col=21)
+Token(COMMA, ",", line=15, col=24)
+Token(STRING, "OK", line=15, col=26)
+Token(R_PAREN, ")", line=15, col=30)
+Token(SEMICOLON, ";", line=15, col=31)
+Token(IDENTIFIER, "res", line=16, col=7)
+Token(DOT, ".", line=16, col=10)
+Token(IDENTIFIER, "end", line=16, col=11)
+Token(L_PAREN, "(", line=16, col=14)
+Token(IDENTIFIER, "JSON", line=16, col=15)
+Token(DOT, ".", line=16, col=19)
+Token(IDENTIFIER, "stringify", line=16, col=20)
+Token(L_PAREN, "(", line=16, col=29)
+Token(IDENTIFIER, "user", line=16, col=30)
+Token(R_PAREN, ")", line=16, col=34)
+Token(R_PAREN, ")", line=16, col=35)
+Token(SEMICOLON, ";", line=16, col=36)
+Token(R_BRACE, "}", line=17, col=5)
+Token(ELSE, "else", line=17, col=7)
+Token(L_BRACE, "{", line=17, col=12)
+Token(IDENTIFIER, "res", line=18, col=7)
+Token(DOT, ".", line=18, col=10)
+Token(IDENTIFIER, "writeHead", line=18, col=11)
+Token(L_PAREN, "(", line=18, col=20)
+Token(NUMBER, "404", line=18, col=21)
+Token(COMMA, ",", line=18, col=24)
+Token(STRING, "Not Found", line=18, col=26)
+Token(R_PAREN, ")", line=18, col=37)
+Token(SEMICOLON, ";", line=18, col=38)
+Token(IDENTIFIER, "res", line=19, col=7)
+Token(DOT, ".", line=19, col=10)
+Token(IDENTIFIER, "end", line=19, col=11)
+Token(L_PAREN, "(", line=19, col=14)
+Token(STRING, "User not found", line=19, col=15)
+Token(R_PAREN, ")", line=19, col=31)
+Token(SEMICOLON, ";", line=19, col=32)
+Token(R_BRACE, "}", line=20, col=5)
+Token(R_BRACE, "}", line=21, col=3)
+Token(ELSE, "else", line=21, col=5)
+Token(L_BRACE, "{", line=21, col=10)
+Token(IDENTIFIER, "res", line=22, col=5)
+Token(DOT, ".", line=22, col=8)
+Token(IDENTIFIER, "writeHead", line=22, col=9)
+Token(L_PAREN, "(", line=22, col=18)
+Token(NUMBER, "404", line=22, col=19)
+Token(COMMA, ",", line=22, col=22)
+Token(STRING, "Not Found", line=22, col=24)
+Token(R_PAREN, ")", line=22, col=35)
+Token(SEMICOLON, ";", line=22, col=36)
+Token(IDENTIFIER, "res", line=23, col=5)
+Token(DOT, ".", line=23, col=8)
+Token(IDENTIFIER, "end", line=23, col=9)
+Token(L_PAREN, "(", line=23, col=12)
+Token(STRING, "Not Found", line=23, col=13)
+Token(R_PAREN, ")", line=23, col=24)
+Token(SEMICOLON, ";", line=23, col=25)
+Token(R_BRACE, "}", line=24, col=3)
+Token(R_BRACE, "}", line=25, col=1)
+Token(CONST, "const", line=27, col=1)
+Token(IDENTIFIER, "server", line=27, col=7)
+Token(EQUALS, "=", line=27, col=14)
+Token(IDENTIFIER, "http", line=27, col=16)
+Token(DOT, ".", line=27, col=20)
+Token(IDENTIFIER, "createServer", line=27, col=21)
+Token(L_PAREN, "(", line=27, col=33)
+Token(IDENTIFIER, "handler", line=27, col=34)
+Token(R_PAREN, ")", line=27, col=41)
+Token(SEMICOLON, ";", line=27, col=42)
+Token(IDENTIFIER, "server", line=29, col=1)
+Token(DOT, ".", line=29, col=7)
+Token(IDENTIFIER, "listen", line=29, col=8)
+Token(L_PAREN, "(", line=29, col=14)
+Token(NUMBER, "3001", line=29, col=15)
+Token(COMMA, ",", line=29, col=19)
+Token(L_PAREN, "(", line=29, col=21)
+Token(R_PAREN, ")", line=29, col=22)
+Token(ARROW, "=>", line=29, col=24)
+Token(L_BRACE, "{", line=29, col=27)
+Token(IDENTIFIER, "console", line=30, col=3)
+Token(DOT, ".", line=30, col=10)
+Token(IDENTIFIER, "log", line=30, col=11)
+Token(L_PAREN, "(", line=30, col=14)
+Token(STRING, "Users API running on port 3001", line=30, col=15)
+Token(R_PAREN, ")", line=30, col=47)
+Token(SEMICOLON, ";", line=30, col=48)
+Token(R_BRACE, "}", line=31, col=1)
+Token(R_PAREN, ")", line=31, col=2)
+Token(SEMICOLON, ";", line=31, col=3)
+Token(EOF, "", line=32, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "http"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "http",
+        "raw": "\"http\"",
+        "line": 1,
+        "column": 18
+      },
+      "line": 1,
+      "column": 1
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "imported": {
+            "type": "Identifier",
+            "name": "readFileSync"
+          },
+          "local": {
+            "type": "Identifier",
+            "name": "readFileSync"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "fs",
+        "raw": "\"fs\"",
+        "line": 2,
+        "column": 30
+      },
+      "line": 2,
+      "column": 1
+    },
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "handler"
+      },
+      "params": [
+        {
+          "type": "Identifier",
+          "name": "req",
+          "typeAnnotation": {
+            "type": "KeywordType",
+            "name": "any",
+            "line": 4,
+            "column": 23
+          }
+        },
+        {
+          "type": "Identifier",
+          "name": "res",
+          "typeAnnotation": {
+            "type": "KeywordType",
+            "name": "any",
+            "line": 4,
+            "column": 33
+          }
+        }
+      ],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 4,
+        "column": 39
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "fileContent"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "string",
+                  "line": 5,
+                  "column": 22
+                },
+                "init": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "readFileSync",
+                    "line": 5,
+                    "column": 31
+                  },
+                  "arguments": [
+                    {
+                      "type": "Literal",
+                      "value": "examples/test-data/users.json",
+                      "raw": "\"examples/test-data/users.json\"",
+                      "line": 5,
+                      "column": 44
+                    },
+                    {
+                      "type": "Literal",
+                      "value": "utf-8",
+                      "raw": "\"utf-8\"",
+                      "line": 5,
+                      "column": 77
+                    }
+                  ],
+                  "line": 5,
+                  "column": 31
+                }
+              }
+            ],
+            "line": 5,
+            "column": 3
+          },
+          {
+            "type": "IfStatement",
+            "test": {
+              "type": "BinaryExpression",
+              "operator": "===",
+              "left": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "req",
+                  "line": 7,
+                  "column": 7
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "url"
+                },
+                "computed": false,
+                "line": 7,
+                "column": 7
+              },
+              "right": {
+                "type": "Literal",
+                "value": "/all",
+                "raw": "\"/all\"",
+                "line": 7,
+                "column": 19
+              },
+              "line": 7,
+              "column": 7
+            },
+            "consequent": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "res",
+                        "line": 8,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "writeHead"
+                      },
+                      "computed": false,
+                      "line": 8,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": 200,
+                        "raw": "200",
+                        "line": 8,
+                        "column": 19
+                      },
+                      {
+                        "type": "Literal",
+                        "value": "OK",
+                        "raw": "\"OK\"",
+                        "line": 8,
+                        "column": 24
+                      }
+                    ],
+                    "line": 8,
+                    "column": 5
+                  },
+                  "line": 8,
+                  "column": 5
+                },
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "res",
+                        "line": 9,
+                        "column": 5
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "end"
+                      },
+                      "computed": false,
+                      "line": 9,
+                      "column": 5
+                    },
+                    "arguments": [
+                      {
+                        "type": "Identifier",
+                        "name": "fileContent",
+                        "line": 9,
+                        "column": 13
+                      }
+                    ],
+                    "line": 9,
+                    "column": 5
+                  },
+                  "line": 9,
+                  "column": 5
+                }
+              ],
+              "line": 7,
+              "column": 27
+            },
+            "alternate": {
+              "type": "IfStatement",
+              "test": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "MemberExpression",
+                  "object": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "req",
+                      "line": 10,
+                      "column": 14
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "url"
+                    },
+                    "computed": false,
+                    "line": 10,
+                    "column": 14
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "startsWith"
+                  },
+                  "computed": false,
+                  "line": 10,
+                  "column": 14
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "value": "/user",
+                    "raw": "\"/user\"",
+                    "line": 10,
+                    "column": 33
+                  }
+                ],
+                "line": 10,
+                "column": 14
+              },
+              "consequent": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "VariableDeclaration",
+                    "kind": "const",
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "id": {
+                          "type": "Identifier",
+                          "name": "id"
+                        },
+                        "typeAnnotation": {
+                          "type": "KeywordType",
+                          "name": "string",
+                          "line": 11,
+                          "column": 15
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "req",
+                              "line": 11,
+                              "column": 24
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "query"
+                            },
+                            "computed": false,
+                            "line": 11,
+                            "column": 24
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "value": "id",
+                              "raw": "\"id\"",
+                              "line": 11,
+                              "column": 34
+                            }
+                          ],
+                          "line": 11,
+                          "column": 24
+                        }
+                      }
+                    ],
+                    "line": 11,
+                    "column": 5
+                  },
+                  {
+                    "type": "VariableDeclaration",
+                    "kind": "const",
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "id": {
+                          "type": "Identifier",
+                          "name": "users"
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "JSON",
+                              "line": 12,
+                              "column": 19
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "parseArray"
+                            },
+                            "computed": false,
+                            "line": 12,
+                            "column": 19
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "name": "fileContent",
+                              "line": 12,
+                              "column": 35
+                            }
+                          ],
+                          "line": 12,
+                          "column": 19
+                        }
+                      }
+                    ],
+                    "line": 12,
+                    "column": 5
+                  },
+                  {
+                    "type": "VariableDeclaration",
+                    "kind": "const",
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "id": {
+                          "type": "Identifier",
+                          "name": "user"
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "users",
+                              "line": 13,
+                              "column": 18
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "find"
+                            },
+                            "computed": false,
+                            "line": 13,
+                            "column": 18
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "value": "id",
+                              "raw": "\"id\"",
+                              "line": 13,
+                              "column": 29
+                            },
+                            {
+                              "type": "Identifier",
+                              "name": "id",
+                              "line": 13,
+                              "column": 35
+                            }
+                          ],
+                          "line": 13,
+                          "column": 18
+                        }
+                      }
+                    ],
+                    "line": 13,
+                    "column": 5
+                  },
+                  {
+                    "type": "IfStatement",
+                    "test": {
+                      "type": "Identifier",
+                      "name": "user",
+                      "line": 14,
+                      "column": 9
+                    },
+                    "consequent": {
+                      "type": "BlockStatement",
+                      "body": [
+                        {
+                          "type": "ExpressionStatement",
+                          "expression": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "object": {
+                                "type": "Identifier",
+                                "name": "res",
+                                "line": 15,
+                                "column": 7
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "writeHead"
+                              },
+                              "computed": false,
+                              "line": 15,
+                              "column": 7
+                            },
+                            "arguments": [
+                              {
+                                "type": "Literal",
+                                "value": 200,
+                                "raw": "200",
+                                "line": 15,
+                                "column": 21
+                              },
+                              {
+                                "type": "Literal",
+                                "value": "OK",
+                                "raw": "\"OK\"",
+                                "line": 15,
+                                "column": 26
+                              }
+                            ],
+                            "line": 15,
+                            "column": 7
+                          },
+                          "line": 15,
+                          "column": 7
+                        },
+                        {
+                          "type": "ExpressionStatement",
+                          "expression": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "object": {
+                                "type": "Identifier",
+                                "name": "res",
+                                "line": 16,
+                                "column": 7
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "end"
+                              },
+                              "computed": false,
+                              "line": 16,
+                              "column": 7
+                            },
+                            "arguments": [
+                              {
+                                "type": "CallExpression",
+                                "callee": {
+                                  "type": "MemberExpression",
+                                  "object": {
+                                    "type": "Identifier",
+                                    "name": "JSON",
+                                    "line": 16,
+                                    "column": 15
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "stringify"
+                                  },
+                                  "computed": false,
+                                  "line": 16,
+                                  "column": 15
+                                },
+                                "arguments": [
+                                  {
+                                    "type": "Identifier",
+                                    "name": "user",
+                                    "line": 16,
+                                    "column": 30
+                                  }
+                                ],
+                                "line": 16,
+                                "column": 15
+                              }
+                            ],
+                            "line": 16,
+                            "column": 7
+                          },
+                          "line": 16,
+                          "column": 7
+                        }
+                      ],
+                      "line": 14,
+                      "column": 15
+                    },
+                    "alternate": {
+                      "type": "BlockStatement",
+                      "body": [
+                        {
+                          "type": "ExpressionStatement",
+                          "expression": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "object": {
+                                "type": "Identifier",
+                                "name": "res",
+                                "line": 18,
+                                "column": 7
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "writeHead"
+                              },
+                              "computed": false,
+                              "line": 18,
+                              "column": 7
+                            },
+                            "arguments": [
+                              {
+                                "type": "Literal",
+                                "value": 404,
+                                "raw": "404",
+                                "line": 18,
+                                "column": 21
+                              },
+                              {
+                                "type": "Literal",
+                                "value": "Not Found",
+                                "raw": "\"Not Found\"",
+                                "line": 18,
+                                "column": 26
+                              }
+                            ],
+                            "line": 18,
+                            "column": 7
+                          },
+                          "line": 18,
+                          "column": 7
+                        },
+                        {
+                          "type": "ExpressionStatement",
+                          "expression": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "object": {
+                                "type": "Identifier",
+                                "name": "res",
+                                "line": 19,
+                                "column": 7
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "end"
+                              },
+                              "computed": false,
+                              "line": 19,
+                              "column": 7
+                            },
+                            "arguments": [
+                              {
+                                "type": "Literal",
+                                "value": "User not found",
+                                "raw": "\"User not found\"",
+                                "line": 19,
+                                "column": 15
+                              }
+                            ],
+                            "line": 19,
+                            "column": 7
+                          },
+                          "line": 19,
+                          "column": 7
+                        }
+                      ],
+                      "line": 17,
+                      "column": 12
+                    },
+                    "line": 14,
+                    "column": 5
+                  }
+                ],
+                "line": 10,
+                "column": 43
+              },
+              "alternate": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "object": {
+                          "type": "Identifier",
+                          "name": "res",
+                          "line": 22,
+                          "column": 5
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "writeHead"
+                        },
+                        "computed": false,
+                        "line": 22,
+                        "column": 5
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "value": 404,
+                          "raw": "404",
+                          "line": 22,
+                          "column": 19
+                        },
+                        {
+                          "type": "Literal",
+                          "value": "Not Found",
+                          "raw": "\"Not Found\"",
+                          "line": 22,
+                          "column": 24
+                        }
+                      ],
+                      "line": 22,
+                      "column": 5
+                    },
+                    "line": 22,
+                    "column": 5
+                  },
+                  {
+                    "type": "ExpressionStatement",
+                    "expression": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "MemberExpression",
+                        "object": {
+                          "type": "Identifier",
+                          "name": "res",
+                          "line": 23,
+                          "column": 5
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "end"
+                        },
+                        "computed": false,
+                        "line": 23,
+                        "column": 5
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "value": "Not Found",
+                          "raw": "\"Not Found\"",
+                          "line": 23,
+                          "column": 13
+                        }
+                      ],
+                      "line": 23,
+                      "column": 5
+                    },
+                    "line": 23,
+                    "column": 5
+                  }
+                ],
+                "line": 21,
+                "column": 10
+              },
+              "line": 10,
+              "column": 10
+            },
+            "line": 7,
+            "column": 3
+          }
+        ],
+        "line": 4,
+        "column": 44
+      },
+      "line": 4,
+      "column": 1
+    },
+    {
+      "type": "VariableDeclaration",
+      "kind": "const",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "server"
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "MemberExpression",
+              "object": {
+                "type": "Identifier",
+                "name": "http",
+                "line": 27,
+                "column": 16
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "createServer"
+              },
+              "computed": false,
+              "line": 27,
+              "column": 16
+            },
+            "arguments": [
+              {
+                "type": "Identifier",
+                "name": "handler",
+                "line": 27,
+                "column": 34
+              }
+            ],
+            "line": 27,
+            "column": 16
+          }
+        }
+      ],
+      "line": 27,
+      "column": 1
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "object": {
+            "type": "Identifier",
+            "name": "server",
+            "line": 29,
+            "column": 1
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "listen"
+          },
+          "computed": false,
+          "line": 29,
+          "column": 1
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": 3001,
+            "raw": "3001",
+            "line": 29,
+            "column": 15
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "params": [],
+            "body": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "console",
+                        "line": 30,
+                        "column": 3
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "log"
+                      },
+                      "computed": false,
+                      "line": 30,
+                      "column": 3
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "value": "Users API running on port 3001",
+                        "raw": "\"Users API running on port 3001\"",
+                        "line": 30,
+                        "column": 15
+                      }
+                    ],
+                    "line": 30,
+                    "column": 3
+                  },
+                  "line": 30,
+                  "column": 3
+                }
+              ],
+              "line": 29,
+              "column": 27
+            },
+            "line": 29,
+            "column": 21
+          }
+        ],
+        "line": 29,
+        "column": 1
+      },
+      "line": 29,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}
