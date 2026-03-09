@@ -105,15 +105,32 @@ export class Tokenizer {
         if (this.match('/')) {
           // Comment goes until the end of the line
           while (this.peek() !== '\n' && !this.isAtEnd()) this.advance();
+        } else if (this.match('=')) {
+          this.addToken(TokenType.SLASH_EQ);
         } else {
           this.addToken(TokenType.SLASH);
         }
         break;
       case '+':
-        this.addToken(TokenType.PLUS);
+        if (this.match('=')) {
+          this.addToken(TokenType.PLUS_EQ);
+        } else {
+          this.addToken(TokenType.PLUS);
+        }
         break;
       case '-':
-        this.addToken(TokenType.MINUS);
+        if (this.match('=')) {
+          this.addToken(TokenType.MINUS_EQ);
+        } else {
+          this.addToken(TokenType.MINUS);
+        }
+        break;
+      case '*':
+        if (this.match('=')) {
+          this.addToken(TokenType.STAR_EQ);
+        } else {
+          this.addToken(TokenType.STAR);
+        }
         break;
       case '|':
         this.addToken(TokenType.PIPE);
@@ -157,7 +174,7 @@ export class Tokenizer {
     while (this.isAlphaNumeric(this.peek())) this.advance();
 
     const text = this.source.substring(this.start, this.current);
-    let type = Tokenizer.keywords[text];
+    let type = Object.prototype.hasOwnProperty.call(Tokenizer.keywords, text) ? Tokenizer.keywords[text] : undefined;
     if (!type) type = TokenType.IDENTIFIER;
 
     this.addToken(type);

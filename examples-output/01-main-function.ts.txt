@@ -45,3 +45,194 @@ Token(SEMICOLON, ";", line=6, col=14)
 Token(R_BRACE, "}", line=7, col=3)
 Token(R_BRACE, "}", line=8, col=1)
 Token(EOF, "", line=9, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "FunctionDeclaration",
+      "id": {
+        "type": "Identifier",
+        "name": "main"
+      },
+      "params": [],
+      "returnType": {
+        "type": "KeywordType",
+        "name": "void",
+        "line": 1,
+        "column": 18
+      },
+      "body": {
+        "type": "BlockStatement",
+        "body": [
+          {
+            "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "console",
+                  "line": 2,
+                  "column": 3
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                },
+                "computed": false,
+                "line": 2,
+                "column": 3
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "Hello World",
+                  "raw": "\"Hello World\"",
+                  "line": 2,
+                  "column": 15
+                }
+              ],
+              "line": 2,
+              "column": 3
+            },
+            "line": 2,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "let",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "x"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "number",
+                  "line": 3,
+                  "column": 10
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": 10,
+                  "raw": "10",
+                  "line": 3,
+                  "column": 19
+                }
+              }
+            ],
+            "line": 3,
+            "column": 3
+          },
+          {
+            "type": "VariableDeclaration",
+            "kind": "const",
+            "declarations": [
+              {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "y"
+                },
+                "typeAnnotation": {
+                  "type": "KeywordType",
+                  "name": "string",
+                  "line": 4,
+                  "column": 12
+                },
+                "init": {
+                  "type": "Literal",
+                  "value": "hello",
+                  "raw": "\"hello\"",
+                  "line": 4,
+                  "column": 21
+                }
+              }
+            ],
+            "line": 4,
+            "column": 3
+          },
+          {
+            "type": "IfStatement",
+            "test": {
+              "type": "BinaryExpression",
+              "operator": ">",
+              "left": {
+                "type": "Identifier",
+                "name": "x",
+                "line": 5,
+                "column": 7
+              },
+              "right": {
+                "type": "Literal",
+                "value": 5,
+                "raw": "5",
+                "line": 5,
+                "column": 11
+              },
+              "line": 5,
+              "column": 7
+            },
+            "consequent": {
+              "type": "BlockStatement",
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "AssignmentExpression",
+                    "operator": "=",
+                    "left": {
+                      "type": "Identifier",
+                      "name": "x",
+                      "line": 6,
+                      "column": 5
+                    },
+                    "right": {
+                      "type": "BinaryExpression",
+                      "operator": "+",
+                      "left": {
+                        "type": "Identifier",
+                        "name": "x",
+                        "line": 6,
+                        "column": 9
+                      },
+                      "right": {
+                        "type": "Literal",
+                        "value": 1,
+                        "raw": "1",
+                        "line": 6,
+                        "column": 13
+                      },
+                      "line": 6,
+                      "column": 9
+                    },
+                    "line": 6,
+                    "column": 5
+                  },
+                  "line": 6,
+                  "column": 5
+                }
+              ],
+              "line": 5,
+              "column": 14
+            },
+            "line": 5,
+            "column": 3
+          }
+        ],
+        "line": 1,
+        "column": 23
+      },
+      "line": 1,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}

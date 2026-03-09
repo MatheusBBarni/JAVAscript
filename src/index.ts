@@ -1,6 +1,7 @@
 import { Tokenizer } from './Tokenizer';
+import { Parser } from './Parser';
 import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
-import { join, basename } from 'path';
+import { join } from 'path';
 
 const examplesDir = join(process.cwd(), 'examples');
 const outputDir = join(process.cwd(), 'examples-output');
@@ -25,6 +26,16 @@ try {
 
     let output = `Source: ${file}\n\nTokens:\n`;
     tokens.forEach(token => output += token.toString() + "\n");
+
+    try {
+      const parser = new Parser(tokens);
+      const ast = parser.parse();
+      output += `\n\nAST:\n`;
+      output += JSON.stringify(ast, null, 2);
+    } catch (parseError: any) {
+      console.error(`Error parsing ${file}: ${parseError.message}`);
+      output += `\n\nParse Error:\n${parseError.message}\n`;
+    }
 
     const outputFilePath = join(outputDir, `${file}.txt`);
     writeFileSync(outputFilePath, output);

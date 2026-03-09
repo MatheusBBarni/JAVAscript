@@ -13,7 +13,7 @@ The interpreter follows the standard compilation including:
 ## Current Status
 
 - [x] **Tokenization**: Implemented. Supports keywords, literals, operators, functions, and imports.
-- [ ] **Parsing**: In progress. Designing AST structure and recursive descent parser.
+- [x] **Parsing**: In progress. Designing AST structure and recursive descent parser.
 - [ ] **Code Generation**: WIP.
 
 ## Examples

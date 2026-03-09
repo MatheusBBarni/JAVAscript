@@ -58,6 +58,10 @@ export enum TokenType {
   PIPE = 'PIPE', // |
   AMPERSAND = 'AMPERSAND', // &
   QUESTION = 'QUESTION', // ?
+  PLUS_EQ = 'PLUS_EQ', // +=
+  MINUS_EQ = 'MINUS_EQ', // -=
+  STAR_EQ = 'STAR_EQ', // *=
+  SLASH_EQ = 'SLASH_EQ', // /=
 
   // Punctuation
   L_PAREN = 'L_PAREN', // (
