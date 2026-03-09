@@ -136,7 +136,9 @@ AST:
       "source": {
         "type": "Literal",
         "value": "http",
-        "raw": "\"http\""
+        "raw": "\"http\"",
+        "line": 1,
+        "column": 18
       },
       "line": 1,
       "column": 1
@@ -159,7 +161,9 @@ AST:
       "source": {
         "type": "Literal",
         "value": "fs",
-        "raw": "\"fs\""
+        "raw": "\"fs\"",
+        "line": 2,
+        "column": 27
       },
       "line": 2,
       "column": 1

@@ -71,12 +71,35 @@ export class Parser {
 
     this.consume(TokenType.FROM, "Expect 'from' after import specifiers.");
     const sourceTk = this.consume(TokenType.STRING, "Expect import source.");
-    this.consume(TokenType.SEMICOLON, "Expect ';' after import declaration.");
+
+    // Optional semicolon
+    this.match(TokenType.SEMICOLON);
+
+    let sourceNode: AST.Literal | AST.JavaPackageSource;
+
+    // Check if the string matches a java-like package path (e.g. com.digibee.*)
+    // Needs to have at least one dot to be considered a package path in this context.
+    const pathValue = sourceTk.value;
+    if (pathValue.includes('.') && /^[a-zA-Z0-9_*.]+$/.test(pathValue)) {
+      const parts = pathValue.split('.');
+      const wildcard = parts[parts.length - 1] === '*';
+      if (wildcard) {
+        parts.pop(); // Remove the '*' from the path array
+      }
+      sourceNode = {
+        type: 'JavaPackageSource',
+        path: parts,
+        wildcard,
+        line: sourceTk.line, column: sourceTk.column
+      };
+    } else {
+      sourceNode = { type: 'Literal', value: pathValue, raw: `"${pathValue}"`, line: sourceTk.line, column: sourceTk.column };
+    }
 
     return {
       type: 'ImportDeclaration',
       specifiers,
-      source: { type: 'Literal', value: sourceTk.value, raw: `"${sourceTk.value}"` },
+      source: sourceNode,
       line: startToken.line, column: startToken.column
     };
   }

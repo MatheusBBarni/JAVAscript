@@ -29,7 +29,8 @@ export type NodeType =
   | 'TypeReference'
   | 'UnionType'
   | 'KeywordType'
-  | 'QualifiedName';
+  | 'QualifiedName'
+  | 'JavaPackageSource';
 
 export interface Node {
   type: NodeType;
@@ -151,7 +152,13 @@ export interface ThrowStatement extends Node {
 export interface ImportDeclaration extends Node {
   type: 'ImportDeclaration';
   specifiers: (ImportDefaultSpecifier | ImportSpecifier)[];
-  source: Literal;
+  source: Literal | JavaPackageSource;
+}
+
+export interface JavaPackageSource extends Node {
+  type: 'JavaPackageSource';
+  path: string[];
+  wildcard: boolean;
 }
 
 export interface ImportDefaultSpecifier extends Node {

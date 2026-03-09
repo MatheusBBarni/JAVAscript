@@ -27,6 +27,8 @@ The `examples-output` directory contains the output of the interpreter process (
 - Function declarations and calls
 - `If`/`else`, `while`, `for` loops
 - `Import`/`export` syntax
+  - **[NEW]** Supports Java-style package string resolving inside ES6 imports: e.g., `import Controller from 'com.test...Controller'`
+  - **[NEW]** Optional semicolons for imports
 - Basic arithmetic and logical operations
 
 ## Running the Project

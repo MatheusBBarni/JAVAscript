@@ -1,0 +1,83 @@
+Source: 05-java-imports.ts
+
+Tokens:
+Token(IMPORT, "import", line=1, col=1)
+Token(IDENTIFIER, "TestController", line=1, col=8)
+Token(FROM, "from", line=1, col=23)
+Token(STRING, "com.test.pipelinecoordinator.designtime.controller.TestController", line=1, col=28)
+Token(IMPORT, "import", line=3, col=1)
+Token(L_BRACE, "{", line=3, col=8)
+Token(IDENTIFIER, "TestController", line=3, col=10)
+Token(R_BRACE, "}", line=3, col=25)
+Token(FROM, "from", line=3, col=27)
+Token(STRING, "com.test.pipelinecoordinator.designtime.controller.*", line=3, col=32)
+Token(EOF, "", line=4, col=1)
+
+
+AST:
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "TestController"
+          }
+        }
+      ],
+      "source": {
+        "type": "JavaPackageSource",
+        "path": [
+          "com",
+          "test",
+          "pipelinecoordinator",
+          "designtime",
+          "controller",
+          "TestController"
+        ],
+        "wildcard": false,
+        "line": 1,
+        "column": 28
+      },
+      "line": 1,
+      "column": 1
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "imported": {
+            "type": "Identifier",
+            "name": "TestController"
+          },
+          "local": {
+            "type": "Identifier",
+            "name": "TestController"
+          }
+        }
+      ],
+      "source": {
+        "type": "JavaPackageSource",
+        "path": [
+          "com",
+          "test",
+          "pipelinecoordinator",
+          "designtime",
+          "controller"
+        ],
+        "wildcard": true,
+        "line": 3,
+        "column": 32
+      },
+      "line": 3,
+      "column": 1
+    }
+  ],
+  "line": 1,
+  "column": 1
+}
